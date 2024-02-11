@@ -1,7 +1,9 @@
 # Prática 1
 No MySQL Workbench, utilizando o banco de dados ‘sprint1’:
 ## Escreva e execute os comandos para:
-    • Criar a tabela chamada Atleta para conter os dados: idAtleta (int e chave primária da tabela), nome (varchar, tamanho 40), modalidade (varchar, tamanho 40), qtdMedalha (int, representando a quantidade de medalhas que o atleta possui)
+    • Criar a tabela chamada Atleta para conter os dados: idAtleta (int e chave primária da tabela),
+    nome (varchar, tamanho 40), modalidade (varchar, tamanho 40), qtdMedalha (int, representando a
+    quantidade de medalhas que o atleta possui)
     • Inserir dados na tabela, procurando colocar mais de um atleta para cada modalidade
 ## Escreva e execute os comandos para:
     • Exibir todos os dados da tabela.
@@ -14,7 +16,8 @@ No MySQL Workbench, utilizando o banco de dados ‘sprint1’:
 <br><br><br>
 No MySQL Workbench, utilizando o banco de dados ‘sprint1’:
 ## Escreva e execute os comandos para:
-    • Criar a tabela chamada Musica para conter os dados: idMusica, titulo (tamanho 40), artista (tamanho 40), genero (tamanho 40), sendo que idMusica é a chave primária da tabela.
+    • Criar a tabela chamada Musica para conter os dados: idMusica, titulo (tamanho 40),
+    artista (tamanho 40), genero (tamanho 40), sendo que idMusica é a chave primária da tabela.
     • Inserir dados na tabela, procurando colocar um gênero de música que tenha mais de uma
     música, e um artista, que tenha mais de uma música cadastrada. Procure inserir pelo
     menos umas 7 músicas.

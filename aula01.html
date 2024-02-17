@@ -5,31 +5,59 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Aula 01</title>
     </head>
-    <link rel="stylesheet" href="../Atividade_Algoritmos/aula01.css">
+    <link rel="stylesheet" href="/aula01.css">
     <style>
         body {
             background-color:cornflowerblue;
         }
     </style>
     <body>
-        <div class="div1">
-            <img src="" width="300px">
-            <p>
-                <h1 id="titulo">Título</h1>
-                <br>
-                <h6 id="texto">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem distinctio, tempore sed laboriosam ut reprehenderit ipsa ab voluptatibus in ratione, corporis architecto non dignissimos numquam nisi quae. Similique, obcaecati nobis.</h6>
-            </p>
-            <br> <br>
-            <input id="nome" type="text" >
-            <br>
-            <button onClick="cumprimentar()" id="botao">Clique aqui</button>
+        <div class="corpo">
+            <h1 id="titulo">Calculadora</h1>
+            <h6 id="texto">Digite dois números e escolha a operação:</h6>
+            <div class="numeros">
+                <input id="numero1" placeholder="Número 1" type="number" >
+                <input id="numero2" placeholder="Número 2" type="number" >
+            </div>
+            <div class="operacoes">
+                <label id="titulooperacao" for="operacao">Operação matemática:</label>
+                <select id="operacao" name="operacao">
+                    <option value="adicao">+  ADIÇÃO</option>
+                    <option value="subtracao">-  SUBTRAÇÃO</option>
+                    <option value="multiplicacao">X  MULTIPLICAÇÃO</option>
+                    <option value="divisao">/  DIVISÃO</option>
+                </select>
+            </div>
+            <button onClick="calcular()" id="botao">CALCULAR</button>
+            <div class="caixaDeResultado">
+                <h1 id="resultado" >RESULTADO</h1>
+                <p id="alteracao"> </p>
+            </div>
         </div>
     </body>
 </html>
 
 <script>
-    
-    function cumprimentar() {
-        alert("Olá, " + nome.value)        
+    const resposta = document.querySelector("p");
+    function calcular() {
+        if(operacao.value == "adicao") {
+            let resultado = (Number(numero1.value) + Number(numero2.value));
+            resposta.textContent = resultado;
+        } else if(operacao.value == "subtracao") {
+            let resultado = (Number(numero1.value) - Number(numero2.value));
+            resposta.textContent = resultado;
+        } else if(operacao.value == "multiplicacao") {
+            let resultado = (Number(numero1.value) * Number(numero2.value));
+            resposta.textContent = resultado;
+        } else if(operacao.value == "divisao") {
+            let resultado = (Number(numero1.value) / Number(numero2.value));
+            resposta.textContent = resultado;
+        } else {
+            alert("Erro no sistema, por favor reinicie a página!");
+        }
     }
+
+    //function arredondar(resultado) {
+    //https://www.alura.com.br/artigos/formatando-numeros-no-javascript
+    //}
 </script>

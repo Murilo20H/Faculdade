@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Calculator</title>
+        <link rel="icon" type="image/x-icon" href="/Faculdade/Calculator/Icon.png">
+    </head>
+    <link rel="stylesheet" href="/Faculdade/Calculator/Conversao/Conversao.css">
+    <!-- 
+        -#2c3e50
+        -#34495e
+        -#1f2c39
+        -#1a2533
+        -#253441
+        
+        #145a32
+        #154d22
+    -->
+    <style>
+        body {
+            background-color:#1f2c39;
+        }
+    </style>
+    <body>
+        <div class="corpo">
+            <h1 id="titulo">Conversão</h1>
+            <h6 id="texto">Digite o número que será convertido:</h6>
+            <div class="numeros">
+                <input id="numero1" type="number" >
+            </div>
+            <div class="caixaDeResultado">
+                <h1 id="resultado" >RESULTADO</h1>
+                <p id="alteracao1"> </p>
+            </div>
+            <div class="divTipoConversao">
+                <label id="labelTituloTipoConversao" for="tipo">Tipo de conversão:</label>
+                <select id="selectTipo" name="tipo" onchange="alterarTipo()">
+                    <option selected value="tempo">TEMPO</option>
+                    <option value="massa">MASSA</option>
+                    <option value="comprimento">COMPRIMENTO</option>
+                    <option value="temperatura">TEMPERATURA</option>=
+                </select>
+            </div>
+
+            <div id="divResposta"></div>
+            <!-- 
+            <div id="divEntradaTempo">
+            <label id="labelTituloEntradaTempo" for="entradaTempo">Converter para: </label>
+            <select id="selectEntradaTempo" name="entradaTempo" onchange="alterarTipo()">
+            <option selected value="nanosegundo">NANOSEGUNDO</option>
+            <option value="microssegundo">MICROSSEGUNDO</option>
+            <option value="milissegundo">MILISSEGUNDO</option>
+            <option value="segundo">SEGUNDO</option>
+            <option value="minuto">MINUTO</option>
+            <option value="hora">HORA</option>
+            <option value="dia">DIA</option>
+            <option value="semana">SEMANA</option>
+            <option value="mes">MÊS</option>
+            <option value="ano">ANO</option>
+            <option value="decada">DÉCADA</option>
+            <option value="seculo">SÉCULO</option>
+            </select>
+            </div>
+            <div id="divSaidaTempo">
+            <label id="labelTituloSaidaTempo" for="saidaTempo">Converter para: </label>
+            <select id="selectSaidaTempo" name="saidaTempo" onchange="alterarTipo()">
+            <option selected value="nanosegundo">NANOSEGUNDO</option>
+            <option value="microssegundo">MICROSSEGUNDO</option>
+            <option value="milissegundo">MILISSEGUNDO</option>
+            <option value="segundo">SEGUNDO</option>
+            <option value="minuto">MINUTO</option>
+            <option value="hora">HORA</option>
+            <option value="dia">DIA</option>
+            <option value="semana">SEMANA</option>
+            <option value="mes">MÊS</option>
+            <option value="ano">ANO</option>
+            <option value="decada">DÉCADA</option>
+            <option value="seculo">SÉCULO</option>
+            </select>
+            </div>
+             -->
+        </div>
+        <div class="divBarraLateral">
+            <button id="buttonCalculadora"><a id="aCalculadora" href="/Faculdade/Calculator/Calculadora/Calculadora.html">CALCULADORA</a></button>
+
+            <button id="buttonFormasGeometricas"><a id="aFormasGeometricas" href="/Faculdade/Calculator/FormasGeometricas/FormasGeometricas.html">FORMAS GEOMÉTRICAS</a></button>
+        </div>
+    </body>
+</html>
+
+<script>
+    /*
+    <div id="divMensagem"></div>
+    function ssj() {
+        divMensagem.innerHTML = ``;
+    }
+     */
+
+
+
+    const resposta = document.getElementById("alteracao1");
+    
+    function calcular() {
+        if(operacao.value == "adicao") {
+            let resultado = (Number(numero1.value) + Number(numero2.value));
+            resposta.textContent = resultado.toFixed(Number(casasDecimais.value));
+        } 
+        else if(operacao.value == "subtracao") {
+            let resultado = (Number(numero1.value) - Number(numero2.value));
+            resposta.textContent = resultado.toFixed(Number(casasDecimais.value));
+        }
+        else if(operacao.value == "multiplicacao") {
+            let resultado = (Number(numero1.value) * Number(numero2.value));
+            resposta.textContent = resultado.toFixed(Number(casasDecimais.value));
+        }
+        else if(operacao.value == "divisao") {
+            let resultado = (Number(numero1.value) / Number(numero2.value));
+            resposta.textContent = resultado.toFixed(Number(casasDecimais.value));
+        }
+        else if(operacao.value == "potencia") {
+            let resultado = (Number(numero1.value) ** Number(numero2.value));
+            resposta.textContent = resultado.toFixed(Number(casasDecimais.value));
+        }
+        else if(operacao.value == "raiz") {
+            let resultado = (Number(numero1.value) ** (1 / Number(numero2.value)));
+            resposta.textContent = resultado.toFixed(Number(casasDecimais.value));
+        }
+        else {
+            alert("Erro no sistema, por favor reinicie a página!");
+        }
+    }
+    
+    alterarTipo()
+
+    function alterarTipo() {
+        if(selectTipo.value == "tempo") {
+            divResposta.innerHTML = '<div id="divEntradaTempo"><label id="labelTituloEntradaTempo" for="entradaTempo">Converter para: </label><select id="selectEntradaTempo" name="entradaTempo" onchange="alterarTipo()"><option selected value="nanosegundo">NANOSEGUNDO</option><option value="microssegundo">MICROSSEGUNDO</option><option value="milissegundo">MILISSEGUNDO</option><option value="segundo">SEGUNDO</option><option value="minuto">MINUTO</option><option value="hora">HORA</option><option value="dia">DIA</option><option value="semana">SEMANA</option><option value="mes">MÊS</option><option value="ano">ANO</option><option value="decada">DÉCADA</option><option value="seculo">SÉCULO</option></select></div><div id="divSaidaTempo"><label id="labelTituloSaidaTempo" for="saidaTempo">Converter para: </label>    <select id="selectSaidaTempo" name="saidaTempo" onchange="alterarTipo()"><option selected value="nanosegundo">NANOSEGUNDO</option><option value="microssegundo">MICROSSEGUNDO</option><option value="milissegundo">MILISSEGUNDO</option><option value="segundo">SEGUNDO</option><option value="minuto">MINUTO</option><option value="hora">HORA</option><option value="dia">DIA</option><option value="semana">SEMANA</option><option value="mes">MÊS</option><option value="ano">ANO</option><option value="decada">DÉCADA</option><option value="seculo">SÉCULO</option></select></div>';
+        } 
+        else if(selectTipo.value == "massa") {
+            divResposta.innerHTML = '<div id="divEntradaTempo"><label id="labelTituloEntradaTempo" for="entradaTempo">Converter para: </label><select id="selectEntradaTempo" name="entradaTempo" onchange="alterarTipo()"><option selected value="nanosegundo">NANOSEGUNDO</option><option value="microssegundo">MICROSSEGUNDO</option></select></div>';
+        }
+        else if(selectTipo.value == "comprimento") {
+            divResposta.innerHTML = '';
+        }
+        else if(selectTipo.value == "temperatura") {
+            divResposta.innerHTML = '';
+        }
+        else {
+            alert("Erro no sistema, por favor reinicie a página!");
+        }
+    }
+
+    function calcularTempo() {
+        if(selectTipo.value == "tempo") {
+            divResposta.innerHTML = ''
+        } 
+        else if(selectTipo.value == "massa") {
+            divResposta.innerHTML = '';
+        }
+        else if(selectTipo.value == "comprimento") {
+            divResposta.innerHTML = ''
+        }
+        else if(selectTipo.value == "temperatura") {
+        }
+        else {
+            alert("Erro no sistema, por favor reinicie a página!");
+        }
+    }
+
+</script>

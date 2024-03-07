@@ -1,0 +1,31 @@
+.divItemA {
+    background-color: #ff7f00;
+    width: 500px;
+    height: 500px; 
+}
+
+.divItemB {
+    background-color: #90ee90;
+    width: 50%;
+    height: 50%;
+}
+
+.pItemC {
+    color: white;
+    background-color: red;
+    font-size: 25px;
+    font-family: monospace;
+    font-weight: bold;
+}
+
+.divItemD {
+    width: 50%;
+    height: 50vh;
+    background-color: rgb(41, 223, 255);
+}
+
+.divItemE {
+    width: 75vw;
+    height: 50%;
+    background-color: rgb(255, 0, 0);
+}

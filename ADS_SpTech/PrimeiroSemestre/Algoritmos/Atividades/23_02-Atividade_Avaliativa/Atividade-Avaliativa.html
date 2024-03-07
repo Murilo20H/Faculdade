@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade Avaliativa</title>
+</head>
+<body>
+    <h1>Medidas Antropométricas</h1>
+    Digite o seu nome completo: <input type="text" id="inputNome"> <br><br>
+    Digite o seu peso (em kg): <input type="number" id="inputPesoEmKg"> <br><br>
+    Digite a sua altura (em m): <input type="number" id="inputAlturaEmM"> <br><br>
+    <button onclick="calcular()">Calcular IMC e Conversão</button>
+</body>
+</html>
+<script>
+    
+    function calcular() {
+        var nome = inputNome.value;
+        
+        var pesoEmKg = inputPesoEmKg.value;
+        var alturaEmM = inputAlturaEmM.value;
+        var imcEmKgM = pesoEmKg / (alturaEmM * alturaEmM);
+
+        var pesoEmOncas = pesoEmKg * 35.274;
+        var alturaEmPes = alturaEmM / 0.3048;
+        var imcEmOncasPes = pesoEmOncas / (alturaEmPes * alturaEmPes);
+    
+        alert(` ${nome} seu IMC é de:  ${imcEmKgM} \nA sua altura em pés é de:  ${alturaEmPes} \nO seu peso em onças é de:  ${pesoEmOncas} \nO seu IMC em onças/pés² é de:  ${imcEmOncasPes} `);
+    }
+</script>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 14</title>
+</head>
+<body>
+    Digite o nome do passageiro: <input type="text" id="inputNome"> <br><br>
+    Digite a distância (em km) do local atual para o destino do passageiro: <input type="number" id="inputDistancia"> <br><br>
+    Digite a bandeira da corrida (1, 2 ou 3): <input type="number" id="inputBandeira"> <br><br>
+    Digite o horário da corrida: <input type="number" id="inputHorario"> <br><br>
+    <button onclick="calcular()">Calcular corrida</button>
+    <div id="divResposta"></div>
+</body>
+</html>
+<script>
+    
+    function calcular() {
+        var nome = Number(inputNome.value);
+        var distancia = Number(inputDistancia.value);
+        var bandeira = Number(inputBandeira.value);
+        var horario = Number(inputHorario.value);
+        var acrescimo = 0;
+        var valorCorrida = 1.25;
+        var resultado = 0;
+        var resultadoComAcrescimo = 0;
+        var mensagemErro = "Você digitou um horário ou bandeira inválida!";
+        
+        if (horario >= 0) {
+            if (horario <= 23) {
+                
+                if (bandeira > 3) {
+                    alert(mensagemErro);
+                }
+
+                if (bandeira < 1) {
+                    alert(mensagemErro);
+                }
+
+                if (bandeira == 1) {
+                    if (horario >= 0) {
+                        if (horario <= 6) {
+                            acrescimo = 5;
+                        }
+                        else {
+                            if (horario <= 12) {
+                                acrescimo = 10;
+                            }
+                            else {
+                                acrescimo = 15;
+                            }
+                        }
+                    }
+                }
+
+                if (bandeira == 2) {
+                    if (horario >= 0) {
+                        if (horario <= 6) {
+                            acrescimo = 10;
+                        }
+                        else {
+                            if (horario <= 12) {
+                                acrescimo = 20;
+                            }
+                            else {
+                                acrescimo = 30;
+                            }
+                        }
+                    }        
+                }
+
+                if (bandeira == 3) {
+                    if (horario >= 0) {
+                        if (horario <= 6) {
+                            acrescimo = 15;
+                        }
+                        else {
+                            if (horario <= 12) {
+                                acrescimo = 30;
+                            }
+                            else {
+                                acrescimo = 45;
+                            }
+                        }
+                    }                    
+                }   
+                resultado = distancia * valorCorrida;
+                resultadoComAcrescimo = resultado + (resultado * acrescimo / 100);
+                divResposta.innerHTML = `Olá  ${nome} sua corrida, será na bandeira  ${bandeira} , percorrerá  ${distancia} km e o total da corrida será de ${resultadoComAcrescimo} `;
+            }
+            else {
+                alert(mensagemErro);
+            }
+        }
+        else {
+            alert(mensagemErro);
+        }
+
+    }
+</script>

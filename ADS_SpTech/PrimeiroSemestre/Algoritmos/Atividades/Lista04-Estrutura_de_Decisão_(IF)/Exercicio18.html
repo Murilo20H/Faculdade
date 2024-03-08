@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 18</title>
+    <style>
+        .imgTurista {
+            margin-top: 10px;
+            width: 500px;
+            height: 350px;
+        }
+
+        .imgEstudante {
+            margin-top: 10px;
+            width: 500px;
+            height: 350px;
+        }
+    </style>
+</head>
+<body>
+    Digite a frequência do aluno: <input type="number" id="inputFrequencia"> <br><br>
+    <button onclick="analisar()">Analisar frequência</button>
+    <div id="divResposta"></div>
+</body>
+</html>
+<script>
+    
+    function analisar() {
+        var frequencia = Number(inputFrequencia.value);
+
+        if (frequencia < 50) {
+            divResposta.innerHTML = `<img src="https://media.licdn.com/dms/image/C4E12AQFaXoYLA-K3WQ/article-cover_image-shrink_600_2000/0/1608661122294?e=2147483647&v=beta&t=f2JCEn5BAebj5Kp9GkK6TEZaS0uSPgyUgKPUv7jZqLM" class="imgTurista">`;
+        } else {
+            divResposta.innerHTML = `<img src="https://media.gazetadopovo.com.br/2017/08/298e8518ba6191db012724dad7d52bab-gpMedium.jpg" class="imgEstudante">`;
+        }
+    }
+</script>

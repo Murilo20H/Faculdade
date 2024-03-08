@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pré-AC1</title>
+</head>
+<body>
+    Digite a distância percorrida: <input type="number" id="inputDistanciaPercorrida"> <br><br>
+    Digite o tempo de duração da viagem: <input type="number" id="inputTempoDuracaoViagem"> <br><br>
+    Digite a quantidade de passageiros: <input type="number" id="inputQuantidadePassageiros"> <br><br>
+    Digite a hora de início da viagem: <input type="number" id="inputHoraInicioViagem"> <br><br>
+    <button onclick="realizar()">Realizar Viagem</button>
+    <div id="divResposta"></div>
+</body>
+</html>
+<script>
+    function realizar() {
+        var distanciaPercorrida = Number(inputDistanciaPercorrida.value);
+        var tempoDuracaoViagem = Number(inputTempoDuracaoViagem.value);
+        var quantidadePassageiros = Number(inputQuantidadePassageiros.value);
+        var horaInicioViagem = Number(inputHoraInicioViagem.value);
+
+        var custoPercurso = distanciaPercorrida * 0.77;
+        var estimativaTempoCorrida = tempoDuracaoViagem * 1.8;
+
+        var taxaAcrescimo = 0;
+        var taxaDesconto = 0;
+
+        var passageiroExtra = 0;
+
+        var bonusHorario = 0;
+        var adicionalHorario = 0;
+        
+        var valorTotalCorrida = 0;
+
+        var quantidadeCombustivel = 0;
+        var precoCombustivel = 0;
+
+        if (tempoDuracaoViagem >= estimativaTempoCorrida + (estimativaTempoCorrida * 0.1)) {
+            taxaAcrescimo = taxaAcrescimo * 0.07;
+        }
+        if (tempoDuracaoViagem < estimativaTempoCorrida - (estimativaTempoCorrida * 0.1)) {
+            taxaDesconto = taxaDesconto * 0.08;
+        }
+
+        if (quantidadePassageiros > 1) {
+            passageiroExtra = (quantidadePassageiros - 1) * 3;
+        }
+
+        if (horaInicioViagem <= 6) {
+            bonusHorario = bonusHorario * 0.09;
+        }
+        if (horaInicioViagem >= 20) {
+            adicionalHorario = adicionalHorario * 0.11;
+        }
+
+        valorTotalCorrida = custoPercurso + taxaAcrescimo - taxaDesconto + passageiroExtra - bonusHorario + adicionalHorario;
+
+        quantidadeCombustivel = distanciaPercorrida / 12;
+        precoCombustivel = quantidadeCombustivel * 4;
+
+        divResposta.innerHTML =  `A viagem foi iniciada às ${horaInicioViagem} horas e tinha estimativa de ${estimativaTempoCorrida} minutos e durou ${tempoDuracaoViagem} minutos, percorrendo ${distanciaPercorrida} KM, com ${quantidadePassageiros} passageiros, totalizando R$${valorTotalCorrida} do preço da corrida. Com essa distância, foram consumidos ${quantidadeCombustivel} litros de gasolina, totalizando R$${precoCombustivel} de consumo.` 
+    }
+</script>

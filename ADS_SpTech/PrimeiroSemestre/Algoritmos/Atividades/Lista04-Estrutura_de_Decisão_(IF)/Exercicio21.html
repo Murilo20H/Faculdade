@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 21</title>
+    <style>
+        .fonteVerde {
+            color: green;
+        }
+
+        .fonteVermelho {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    Digite a quantidade de homens em um elevador: <input type="number" id="inputHomens"> <br><br>
+    Digite a quantidade de mulheres em um elevador: <input type="number" id="inputMulheres"> <br><br>
+    <button onclick="ligar()">Ligar elevador</button>
+    <div id="divResposta"></div>
+</body>
+</html>
+<script>
+    
+    function ligar() {
+        var homens = Number(inputHomens.value);
+        var mulheres = Number(inputMulheres.value);
+        var pesoTotal = (homens * 90) + (mulheres * 70);
+        
+        if (pesoTotal <= 500) {
+            divResposta.innerHTML = `<h4 class="fonteVerde" > Elevador vai se mover, pois está com ${pesoTotal}kg</h4>`;
+        } else {
+            divResposta.innerHTML = `<h4 class="fonteVermelho" > Alguém precisa descer. Precisa perder ${pesoTotal - 500}kg para mover o elevador</h4>`;
+        }
+    }
+</script>

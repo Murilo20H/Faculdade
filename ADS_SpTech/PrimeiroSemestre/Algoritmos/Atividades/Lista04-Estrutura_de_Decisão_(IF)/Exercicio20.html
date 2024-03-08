@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 20</title>
+    <style>
+        .imgAlimentoBomEstado {
+            margin-top: 20px;
+            width: 500px;
+            height: 350px;
+        }
+
+        .imgAlimentoEstragado {
+            margin-top: 20px;
+            width: 500px;
+            height: 350px;
+        }
+    </style>
+</head>
+<body>
+    Digite a temperatura do ambiente: <input type="number" id="inputTemperatura"> <br><br>
+    <button onclick="verificar()">Verificar clima</button>
+    <div id="divResposta"></div>
+</body>
+</html>
+<script>
+    
+    function verificar() {
+        var temperatura = Number(inputTemperatura.value);
+        
+        if (temperatura < 10) {
+            divResposta.innerHTML = `<h2> Apropriada p/ conservar alimento </h2> <img src="https://assets.folhavitoria.com.br/images/acdd88d0-3e69-0136-6560-6231c35b6685--minified.jpg" class="imgAlimentoBomEstado" >`;
+        } else {
+            divResposta.innerHTML = `<h2> Inapropriada p/ conservar alimento </h2> <img src="https://goiasnoticia.com.br/wp-content/uploads/2022/10/P1510792.jpg" class="imgAlimentoEstragado" >`;
+        }
+    }
+</script>

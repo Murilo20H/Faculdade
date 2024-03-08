@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 17</title>
+</head>
+<body>
+    Digite a quantidade de chocolates que serão comprados: <input type="number" id="inputQuantidadeChocolates"> <br><br>
+    <button onclick="comprar()">Compra</button>
+    <div id="divResposta"></div>
+</body>
+</html>
+<script>
+    
+    function comprar() {
+        var quantidadeChocolates = Number(inputQuantidadeChocolates.value);
+        var precoChocolate = 3;
+        
+        if (quantidadeChocolates >= 12) {
+            precoChocolate = 2.5;
+        }
+        
+        var resultado = quantidadeChocolates * precoChocolate;
+        divResposta.innerHTML = `O valor da sua compra foi de  ${resultado}`;
+    }
+</script>

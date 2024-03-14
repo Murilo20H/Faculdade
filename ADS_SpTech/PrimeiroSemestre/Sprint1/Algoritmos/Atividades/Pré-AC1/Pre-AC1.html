@@ -3,24 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pré-AC1-Desafio</title>
+    <title>Pré-AC1</title>
 </head>
 <body>
     Digite a distância percorrida: <input type="number" id="inputDistanciaPercorrida"> <br><br>
     Digite o tempo de duração da viagem: <input type="number" id="inputTempoDuracaoViagem"> <br><br>
     Digite a quantidade de passageiros: <input type="number" id="inputQuantidadePassageiros"> <br><br>
     Digite a hora de início da viagem: <input type="number" id="inputHoraInicioViagem"> <br><br>
-    <button onclick="realizar()">Realizar Viagem</button> <br><br>
-    <button onclick="encerrar()">Encerrar Dia</button>
+    <button onclick="realizar()">Realizar Viagem</button>
     <div id="divResposta"></div>
 </body>
 </html>
 <script>
-    var horasTrabalhadas = 0;
-    var faturamentoTotal = 0;
-    var precoTotalConsumoCombustivel = 0;
-    var lucroLiquido = 0;
-
     function realizar() {
         var distanciaPercorrida = Number(inputDistanciaPercorrida.value);
         var tempoDuracaoViagem = Number(inputTempoDuracaoViagem.value);
@@ -28,7 +22,7 @@
         var horaInicioViagem = Number(inputHoraInicioViagem.value);
 
         var custoPercurso = distanciaPercorrida * 0.77;
-        var estimativaTempoCorrida = tempoDuracaoViagem * 1.8;
+        var estimativaTempoCorrida = distanciaPercorrida * 1.8;
 
         var taxaAcrescimo = 0;
         var taxaDesconto = 0;
@@ -55,10 +49,10 @@
         }
 
         if (horaInicioViagem <= 6) {
-            bonusHorario = bonusHorario * 0.09;
+            bonusHorario = custoPercurso * 0.09;
         }
-        if (horaInicioViagem > 20) {
-            adicionalHorario = adicionalHorario * 0.11;
+        if (horaInicioViagem >= 20) {
+            adicionalHorario = custoPercurso * 0.11;
         }
 
         valorTotalCorrida = custoPercurso + taxaAcrescimo - taxaDesconto + passageiroExtra - bonusHorario + adicionalHorario;
@@ -66,22 +60,6 @@
         quantidadeCombustivel = distanciaPercorrida / 12;
         precoCombustivel = quantidadeCombustivel * 4;
 
-        divResposta.innerHTML +=  `<br>A viagem foi iniciada às ${horaInicioViagem} horas e tinha estimativa de ${estimativaTempoCorrida} minutos e durou ${tempoDuracaoViagem} minutos, percorrendo ${distanciaPercorrida} KM, com ${quantidadePassageiros} passageiros, totalizando R$${valorTotalCorrida} do preço da corrida. Com essa distância, foram consumidos ${quantidadeCombustivel} litros de gasolina, totalizando R$${precoCombustivel} de consumo.`;
-
-        horasTrabalhadas += tempoDuracaoViagem / 60;
-        faturamentoTotal += valorTotalCorrida;
-        precoTotalConsumoCombustivel += precoCombustivel;
-    }
-    
-    function encerrar() {
-        lucroLiquido = faturamentoTotal - precoTotalConsumoCombustivel;
-        
-        divResposta.innerHTML = `EXTRATO DO DIA<br>Total de Horas Trabalhadas: ${horasTrabalhadas}<br>Faturamento Total: R$${faturamentoTotal}<br>Total de Combustível Consumido: R$${precoTotalConsumoCombustivel}<br>Lucro Líquido: R$${lucroLiquido}`;
-
-        if (horasTrabalhadas > 6) {
-            divResposta.innerHTML += `<br><br>Você já trabalhou bastante hoje! Hora de descansar`;
-        } else {
-            divResposta.innerHTML += `<br><br>Você ainda deve trabalhar mais até cumprir sua cota do dia!`;
-        }
+        divResposta.innerHTML = `A viagem foi iniciada às ${horaInicioViagem} horas e tinha estimativa de ${estimativaTempoCorrida} minutos e durou ${tempoDuracaoViagem} minutos, percorrendo ${distanciaPercorrida} KM, com ${quantidadePassageiros} passageiros, totalizando R$${valorTotalCorrida} do preço da corrida. Com essa distância, foram consumidos ${quantidadeCombustivel} litros de gasolina, totalizando R$${precoCombustivel} de consumo.` 
     }
 </script>

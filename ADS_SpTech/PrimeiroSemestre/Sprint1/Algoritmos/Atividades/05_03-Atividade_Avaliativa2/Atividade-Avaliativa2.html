@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade Avaliativa 2</title>
+</head>
+<body>
+    Digite o valor do salário: <input type="number" id="inputValorSalario"><br><br>
+    Digite o valor do adicional mensal: <input type="number" id="inputValorAdicionalMensal"><br><br>
+    Digite o valor do seu bônus: <input type="number" id="inputValorBonus"><br><br>
+
+    <button onclick="analisar()">Analisar Minha Renda</button>
+
+    <div id="divResposta"></div>
+</body>
+</html>
+<script>
+    function analisar() {
+        var valorSalario = Number(inputValorSalario.value);
+        var valorAdicionalMensal = Number(inputValorAdicionalMensal.value);
+        var valorBonus = Number(inputValorBonus.value);
+
+        var salarioBruto = valorSalario + valorAdicionalMensal + valorBonus;
+        
+        var impostoDeRenda = 0;
+        var salarioComImpostoDeRenda = 0;
+
+        var previdencia = 0;
+        var fundoDeGarantia = 0;
+
+        var salarioLiquido = 0;
+
+        var recomendadoPoupar = 0;
+
+        if (salarioBruto >= 10000) {
+            impostoDeRenda = salarioBruto * 0.125;
+        }
+        
+        salarioComImpostoDeRenda = salarioBruto - impostoDeRenda;
+        
+        previdencia = salarioComImpostoDeRenda * 0.1;
+        fundoDeGarantia = salarioComImpostoDeRenda * 0.08;
+
+        salarioLiquido = salarioComImpostoDeRenda - previdencia - fundoDeGarantia;
+
+        divResposta.innerHTML = `<br>ANÁLISE DA SUA RENDA<br>Com o salário de R$${valorSalario}, com adicional de R$${valorAdicionalMensal} e bônus de R$${valorBonus}, você tem:<br>Bruto: R$${salarioBruto}<br>IR: R$${impostoDeRenda}<br>INSS: R$${previdencia}<br>FGTS: R$${fundoDeGarantia}<br>Líquido: R$${salarioLiquido}`;
+
+        if (salarioLiquido > 2500) {
+            recomendadoPoupar = salarioLiquido * 0.15;
+
+            divResposta.innerHTML += `<br><br>Com a renda de R$${salarioLiquido}, é recomendado poupar R$${recomendadoPoupar}, para que em um ano tenha poupado R$${recomendadoPoupar * 12}`;
+        } else {
+            divResposta.innerHTML += `<br><br>Com a renda de R$${salarioLiquido}, é recomendado obter renda extra para realizar uma poupança.`;
+        }
+    }
+</script>
+ 

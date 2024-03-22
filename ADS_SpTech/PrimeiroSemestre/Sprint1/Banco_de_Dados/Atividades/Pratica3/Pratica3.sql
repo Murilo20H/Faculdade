@@ -57,8 +57,8 @@ CREATE TABLE Musica (
 	titulo varchar(40),
 	artista varchar(40),
     genero varchar(40));
-    
-INSERT INTO Musica VALUES
+
+INSERT INTO Atleta VALUES
 	(1, 'Hey Jude', 'The Beatles', 'Funk'),
     (2, 'Aint No Sunshine', 'Gloria Gaynor', 'Disco'),
     (3, 'Respect', 'Aretha Franklin', 'Funk'),
@@ -75,26 +75,69 @@ CREATE TABLE Album (
 	nome varchar(40),
 	tipo varchar(7),
     dtLancamento date);
+
+INSERT INTO Atleta VALUES
+	(1, 'Thriller', 'The Beatles', 'Funk'),
+    (2, 'Aint No Sunshine', 'Gloria Gaynor', 'Disco'),
+    (3, 'Respect', 'Aretha Franklin', 'Funk'),
+    (4, 'I Will Survive', 'The Beatles', 'Disco'),
+    (5, 'Thriller', 'The Beatles', 'Pop');
+• Inserir pelo menos 2 albuns;
+• Fazer a modelagem lógica conforme a regra de negócio:
+• 1 album pode ter 1 ou muitas músicas;
+• 1 música é de 1 e somente 1 album;
+Execute os comandos para:
+a) Exibir todos os dados das tabelas separadamente;
+b) Criar a chave estrangeira na tabela de acordo com a regra de negócio;
+c) Atualizar os álbuns de cada música;
+d) Exibir as músicas e seus respectivos álbuns;
+e) Exibir somente o título da música e o nome do seu respectivo álbum;
+f) Exibir os dados das músicas e seu respectivo álbum, de um determinado tipo.
+
+
+
+
+CREATE TABLE empresa (
+	idEmpresa int primary key auto_increment,
+	nome varchar(45),
+	responsavel varchar(45));
     
-INSERT INTO Album VALUES
-	(1, 'Thriller', 'físico', '1982-11-30'),
-    (2, 'Aint No Sunshine', 'digital', '1971-06-23'),
-    (3, 'Respect', 'físico', '1965-04-03'),
-    (4, 'I Will Survive', 'físico', '1978-10-19');
+INSERT INTO empresa VALUES
+	(default, 'STEFANINI', 'DANIELA'),
+	(default, 'C6BANK', 'VANESSA');
 
-SELECT * FROM Musica;
-SELECT * FROM Album;
+SELECT * FROM empresa;
 
-ALTER TABLE Musica ADD COLUMN fkAlbum int, ADD CONSTRAINT fkMusicaAlbum
-	foreign key (fkAlbum) references Album(idAlbum);
+CREATE TABLE aluno (
+	ra char(8) primary key,
+	nome varchar(45),
+	bairro varchar(45),
+	fkEmpresa int not null,
+	constraint fkAlunoEmpresa foreign key (fkEmpresa) references empresa(idEmpresa));
 
-UPDATE Musica SET fkAlbum = 1 WHERE idMusica IN (2, 4);
-UPDATE Musica SET fkAlbum = 2 WHERE idMusica IN (1, 3, 6);
-UPDATE Musica SET fkAlbum = 3 WHERE idMusica IN (5, 9, 10);
-UPDATE Musica SET fkAlbum = 4 WHERE idMusica IN (7, 8);
+-- CASO NÃO TENHA CRIADO A FK NA TABELA
+ALTER TABLE aluno ADD COLUMN fkEmpresa int not null,
+	ADD CONSTRAINT fkAlunoEmpresa foreign key (fkEmpresa) references empresa(idEmpresa);
 
-SELECT * FROM Musica JOIN Album ON idAlbum = fkAlbum;
+INSERT INTO aluno VALUES
+	('01241999', 'WILL', 'CONSOLAÇÃO', 1),
+	('01241998', 'WALL', 'TRIANON MASP', 1),
+	('01241997', 'WELL', 'PARAÍSO', 2);
 
-SELECT m.titulo, a.nome FROM Album as a JOIN Musica as m ON idAlbum = fkAlbum;
+SELECT * FROM aluno;
 
-SELECT * FROM Musica as m JOIN Album as a ON idAlbum = fkAlbum WHERE a.tipo = 'físico';
+SELECT * FROM empresa JOIN aluno
+	ON idEmpresa = fkEmpresa;
+
+-- SÃO IGUAIS, PORÉM EM ALGUNS SGBDS DO MYSQL PRECISA DE INNER
+SELECT * FROM empresa INNER JOIN aluno
+	ON idEmpresa = fkEmpresa;
+    
+SELECT responsavel, bairro FROM empresa JOIN aluno 
+	ON idEmpresa = fkEmpresa WHERE bairro = 'PARAÍSO';
+    
+SELECT empresa.nome, aluno.nome FROM empresa
+JOIN aluno ON idEmpresa = fkEmpresa;
+    
+SELECT a.nome as 'Nome do Aluno', e.nome as 'Nome da Empresa'
+FROM empresa as e JOIN aluno as a ON e.idEmpresa = a.fkEmpresa;

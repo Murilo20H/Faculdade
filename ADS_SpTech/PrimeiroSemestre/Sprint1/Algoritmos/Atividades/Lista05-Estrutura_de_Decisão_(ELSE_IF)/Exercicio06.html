@@ -4,27 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercicio 06</title>
-    <style>
-        .corinthians {
-            background-color: black;
-            color: white;
-        }
-
-        .palmeiras {
-            background-color: green;
-            color: white;
-        }
-
-        .santos {
-            background-color: white;
-            color: black;
-        }
-
-        .sao-paulo {
-            background-color: black;
-            color: red;
-        }
-    </style>
 </head>
 <body>
     Digite qual dos seguintes times de São Paulo você torce (São Paulo, Palmeiras, Corinthians, Santos): <br><br><input type="text" id="inputTime"><br><br>
@@ -39,13 +18,13 @@
         var time = inputTime.value;
 
         if (time == "Corinthians"){
-            divResposta.innerHTML = `<div class="corinthians">Salve o Corinthians</div>`;
+            divResposta.innerHTML = `<div style="background-color: black; color: white">Salve o Corinthians</div>`;
         } else if (time == "Palmeiras"){
-            divResposta.innerHTML = `<div class="palmeiras">Salve o alviverde imponente</div>`;
+            divResposta.innerHTML = `<div style="background-color: green; color: white">Salve o alviverde imponente</div>`;
         } else if (time == "Santos"){
-            divResposta.innerHTML = `<div class="santos">Agora quem dá a bola é o Santos</div>`;
+            divResposta.innerHTML = `<div>Agora quem dá a bola é o Santos</div>`;
         } else if (time == "São Paulo"){
-            divResposta.innerHTML = `<div class="sao-paulo">Salve o Tricolor paulista</div>`;
+            divResposta.innerHTML = `<div style="background-color: black; color: red;">Salve o Tricolor paulista</div>`;
         }
     }
 </script>

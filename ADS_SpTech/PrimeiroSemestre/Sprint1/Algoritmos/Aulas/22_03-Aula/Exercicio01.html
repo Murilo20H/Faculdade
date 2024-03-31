@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operadores Lógicos (&&)</title>
+</head>
+<body>
+    <input type="number" id="inputTemperatura"><br><br>
+    <button onclick="analisar()">Analisar</button>
+</body>
+</html>
+<script>
+    function analisar() {
+        var temperatura = Number(inputTemperatura.value);
+        var mensagem = "A temperatura está desconfortável";
+        if (temperatura >= 21 && temperatura <= 24) {
+            mensagem = "A temperatura está confortável";
+        }
+        alert(mensagem);
+    }
+</script>

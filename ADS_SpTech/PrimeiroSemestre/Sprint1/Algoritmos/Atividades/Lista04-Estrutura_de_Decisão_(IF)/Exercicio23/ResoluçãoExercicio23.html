@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Resolução Exercício 23 Murilo</title>
+</head>
+
+<body>
+    Digite o preço do produto incialmente em reais: <input type="number" id="inputPrecoProduto"> <br><br>
+    Digite o valor do desconto em porcentagem: <input type="number" id="inputDesconto"> <br><br>
+    Digite o desconto que será aplicado sobre o desconto em porcentagem: <input type="number"
+        id="inputDescontoDoDesconto"> <br><br>
+    Digite o nome do atendente: <input type="text" id="inputAtendente"> <br><br>
+    <button onclick="calcular()">Calcular Preço do Produto</button> <br><br>
+    <div id="divResposta"></div>
+</body>
+
+</html>
+<script>
+
+    function calcular() {
+        var precoProduto = Number(inputPrecoProduto.value);
+        var desconto = Number(inputDesconto.value);
+        var descontoDoDesconto = Number(inputDescontoDoDesconto.value);
+        var atendente = inputAtendente.value;
+
+        var precoFinal = precoProduto - ((desconto / 100) * (descontoDoDesconto / 100));
+
+        if (atendente != "Joelinton" && atendente != "Jadson") {
+            alert("Atendente inexistente");
+        } else {
+            divResposta.innerHTML = `O acordo proposto com o atendente ${atendente} foi realizado com sucesso, e o valor final do produto ficou R$${precoFinal}`;
+
+        }
+    }
+</script>

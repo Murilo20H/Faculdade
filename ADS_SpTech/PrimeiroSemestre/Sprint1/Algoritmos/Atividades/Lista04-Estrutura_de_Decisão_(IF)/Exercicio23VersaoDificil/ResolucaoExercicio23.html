@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Resolução Exercício 23 Murilo</title>
+</head>
+<body>
+    Digite o preço do produto incialmente em reais: <input type="number" id="inputPrecoProduto"> <br><br>
+    Digite o valor do desconto em porcentagem: <input type="number" id="inputDesconto"> <br><br>
+    Digite o desconto que será aplicado sobre o desconto em porcentagem: <input type="number" id="inputDescontoDoDesconto"> <br><br>
+    Digite o nome do atendente: <input type="text" id="inputAtendente"> <br><br>
+    Digite  o valor do juros composto em porcentagem: <input type="number" id="inputJurosComposto"> <br><br>
+    <button onclick="calcular()">Calcular Preço do Produto</button> <br><br>
+    <div id="divResposta"></div>
+</body>
+</html>
+<script>
+    
+    function calcular() {
+        var precoProduto = Number(inputPrecoProduto.value);
+        var desconto = Number(inputDesconto.value);
+        var descontoDoDesconto = Number(inputDescontoDoDesconto.value);
+        var atendente = inputAtendente.value;
+        var jurosComposto = Number(inputJurosComposto.value);
+
+        var precoProdutoComDesconto = precoProduto - ((desconto / 100) * (descontoDoDesconto / 100));
+        var precoProdutoComJuros = 0;
+        var precoFinal = 0;
+
+
+        if (atendente != "Joelinton" && atendente != "Jadson") {
+            alert("Atendente inexistente");
+        } else {
+            if (atendente == "Joelinton") {
+                if (jurosComposto < 18) {
+                    alert("Juros composto abaixo do proposto");
+                } else {
+                    precoProdutoComJuros = precoProdutoComDesconto + precoProdutoComDesconto * (jurosComposto / 100);
+                    precoProdutoComJuros = precoProdutoComJuros + precoProdutoComJuros * (jurosComposto / 100);
+                    precoProdutoComJuros = precoProdutoComJuros + precoProdutoComJuros * (jurosComposto / 100);
+                    precoProdutoComJuros = precoProdutoComJuros + precoProdutoComJuros * (jurosComposto / 100);
+                    precoFinal = precoProdutoComJuros + precoProdutoComJuros * (jurosComposto / 100);
+        
+                    divResposta.innerHTML = `O acordo proposto com o atendente Joelinton foi realizado com sucesso, e o valor final do produto ficou R$${precoFinal}`;
+                }
+            } else {
+                if (jurosComposto < 7) {
+                    alert("Juros composto abaixo do proposto");
+                } else {
+                    precoProdutoComJuros = precoProdutoComDesconto + precoProdutoComDesconto * (jurosComposto / 100);
+                    precoProdutoComJuros = precoProdutoComJuros + precoProdutoComJuros * (jurosComposto / 100);
+                    precoProdutoComJuros = precoProdutoComJuros + precoProdutoComJuros * (jurosComposto / 100);
+                    precoProdutoComJuros = precoProdutoComJuros + precoProdutoComJuros * (jurosComposto / 100);
+                    precoProdutoComJuros = precoProdutoComJuros + precoProdutoComJuros * (jurosComposto / 100);
+                    precoProdutoComJuros = precoProdutoComJuros + precoProdutoComJuros * (jurosComposto / 100);
+                    precoFinal = precoProdutoComJuros + precoProdutoComJuros * (jurosComposto / 100);
+
+                    divResposta.innerHTML = `O acordo proposto com o atendente Jadson foi realizado com sucesso, e o valor final do produto ficou R$${precoFinal}`;
+                }
+            }
+        }
+    }
+</script>

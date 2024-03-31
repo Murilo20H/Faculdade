@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 01</title>
+</head>
+<body>
+    <label>
+        Escolha o pokemon incial:
+        <select id="selectPokemon">
+            <option value="#">Selecione uma opção</option>
+            <option value="1">Bulbasaur</option>
+            <option value="2">Charmander</option>
+            <option value="3">Squirtle</option>
+        </select>
+    </label>
+    <button onclick="selecionar()">Selecionar</button>
+</body>
+</html>
+<script>
+    function selecionar() {
+        var pokemon = selectPokemon.value;
+
+        if (pokemon == "#") {
+            alert("Escolha um inicial");
+        } else if (pokemon == "1") {
+            alert("Você escolheu o pokemon Bulbasaur, boa escolha, porém não é o melhor!");
+        } else if (pokemon == "2") {
+            alert("Você escolheu o pokemon Charmander, melhor escolha possível!");
+        } else if (pokemon == "3") {
+            alert("Você escolheu o pokemon Squirtle, sua escolha foi ruim!");
+        }
+    }
+</script>

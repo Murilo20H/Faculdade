@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício da Aula 02/04</title>
+</head>
+<body>
+    <h1>Operações com Texto</h1>
+    <label>
+        Digite uma frase: <input id="inputFrase" type="text">
+    </label>
+    <button onclick="analisar()">Analisar</button>
+    <div id="divMensagem"></div>
+</body>
+</html>
+<script>
+    function analisar() {
+        var frase = inputFrase.value;
+
+        var tamanhoFrase = frase.length;
+        divMensagem.innerHTML = `Comprimento do texto: <b>${tamanhoFrase}</b>`;
+        if (tamanhoFrase >= 8) {
+            divMensagem.innerHTML += `<br>Possui <b>8 letras ou mais</b><br>`;
+        } else {
+            divMensagem.innerHTML += `<br>Possui <b>menos de 8 letras</b><br>`;
+        }
+        
+        var comecaA = frase.startsWith('a');
+        divMensagem.innerHTML += `<br>Começa com a: <b>${comecaA}</b>`;
+
+        var comecaHashtag = frase.startsWith('#');
+        divMensagem.innerHTML += `<br>Começa com #: <b>${comecaHashtag}</b>`;
+
+        var terminaCom = frase.endsWith('.com');
+        divMensagem.innerHTML += `<br>Termina com .com: <b>${terminaCom}</b><br>`;
+
+        var primeiraLetra = frase[0];
+        divMensagem.innerHTML += `<br>Primeira letra: <b>${primeiraLetra}</b>`;
+
+        var TerceiraLetra = frase[2];
+        divMensagem.innerHTML += `<br>Terceira letra: <b>${TerceiraLetra}</b>`;
+
+        var ultimaLetra = frase[frase.length - 1];
+        divMensagem.innerHTML += `<br>Última letra: <b>${ultimaLetra}</b><br>`;
+
+        var indiceArroba = frase.indexOf('@');
+        divMensagem.innerHTML += `<br>Índice do @: <b>${indiceArroba}</b>`;
+        if (indiceArroba < 0) {
+            divMensagem.innerHTML += `<br><b>Não contém @</b>`;
+        } else {
+            divMensagem.innerHTML += `<br><b>Contém @</b>`;
+        }
+
+        var indiceHashtag = frase.indexOf('#');
+        divMensagem.innerHTML += `<br>Índice do #: <b>${indiceHashtag}</b>`;
+        if (indiceHashtag < 0) {
+            divMensagem.innerHTML += `<br><b>Não contém #</b>`;
+        } else {
+            divMensagem.innerHTML += `<br><b>Contém #</b>`;
+        }
+
+        var indiceExclamacao = frase.indexOf('!');
+        divMensagem.innerHTML += `<br>Índice do !: <b>${indiceExclamacao}</b>`;
+        if (indiceExclamacao < 0) {
+            divMensagem.innerHTML += `<br><b>Não contém !</b>`;
+        } else {
+            divMensagem.innerHTML += `<br><b>Contém !</b>`;
+        }
+
+        var indiceCifrao = frase.indexOf('$');
+        divMensagem.innerHTML += `<br>Índice do $: <b>${indiceCifrao}</b>`;
+        if (indiceCifrao < 0) {
+            divMensagem.innerHTML += `<br><b>Não contém $</b><br>`;
+        } else {
+            divMensagem.innerHTML += `<br><b>Contém $</b><br>`;
+        }
+
+        var fraseMaiuscula = frase.toUpperCase();
+        var fraseMinuscula = frase.toLowerCase();
+        divMensagem.innerHTML += `<br>Frase em maiúsculo: <b>${fraseMaiuscula}</b>`;
+        divMensagem.innerHTML += `<br>Frase em minúsculo: <b>${fraseMinuscula}</b>`;
+        if (fraseMaiuscula == 'SIM') {
+            divMensagem.innerHTML += `<br>Você digitou <b>SIM</b><br>`;
+        } else if (fraseMaiuscula == 'NÃO') {
+            divMensagem.innerHTML += `<br>Você digitou <b>não</b><br>`;
+        } else {
+            divMensagem.innerHTML += `<br>Você digitou algo diferente de <b>SIM e não</b><br>`;
+        }
+
+        var fraseSemA = frase.replace('a', '');
+        divMensagem.innerHTML += `<br>Frase sem um a: <b>${fraseSemA}</b>`;
+
+        var fraseSemEspacos = frase.replaceAll(' ', '');
+        divMensagem.innerHTML += `<br>Frase sem espaços: <b>${fraseSemEspacos}</b>`;
+
+        var fraseFormatada = frase.replaceAll('a', '4').replaceAll('e', '3').replaceAll('s', '5');
+        divMensagem.innerHTML += `<br>Frase formatada: <b>${fraseFormatada}</b>`;
+
+        var caracter = frase[0];
+        var caracterMaiusculo = caracter.toUpperCase();
+        var fraseAtualizada = frase.replace(caracter, caracterMaiusculo);
+        divMensagem.innerHTML += `<br>Frase atualizada: <b>${fraseAtualizada}</b>`;
+    }
+</script>

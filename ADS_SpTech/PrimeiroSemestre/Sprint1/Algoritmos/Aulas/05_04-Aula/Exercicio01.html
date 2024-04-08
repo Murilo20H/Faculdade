@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 01</title>
+</head>
+<body>
+    <button onclick="contar()">Contar</button>
+    <button onclick="incrementar()">Incrementar</button>
+    <div id="divMensagem"></div>
+</body>
+</html>
+<script>
+    function contar_ate_10() {
+        divMensagem.innerHTML = "1<br>2<br>3<br>4<br>5";
+    }
+
+    function contar() {
+        for(var contador = 1; contador <= 10; contador++) {
+            divMensagem.innerHTML += `${contador} <br>`;
+        }
+    }
+    
+    var contador = 1;
+    var limite = 10;
+    function incrementar() {
+        for( ; contador <= limite; contador++) {
+            divMensagem.innerHTML += `${contador} <br>`;
+        }
+        limite += 10;
+    }
+</script>

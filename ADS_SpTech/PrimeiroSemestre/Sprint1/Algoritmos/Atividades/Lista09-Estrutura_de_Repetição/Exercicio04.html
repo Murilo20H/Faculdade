@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 04</title>
+</head>
+<body>
+    <button onclick="imprimir()">S2 Pares</button>
+    <div id="divResposta"></div>
+</body>
+</html>
+<script>
+    function imprimir() {
+        for (var contador = 0; contador <= 100; contador++) {
+            if (contador % 2 == 0) {
+                divResposta.innerHTML += `${contador}<br>`;
+            }
+        }
+    }
+</script>

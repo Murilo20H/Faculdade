@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 13</title>
+</head>
+
+<body>
+    Digite de quantos em quantos dias você faz musculação: <input type="number" id="inputDias"> <br><br>
+    <button onclick="exibir()">Exibir rotina mensal</button><br><br>
+    <div id="divResposta"></div>
+</body>
+
+</html>
+<script>
+    function exibir() {
+        var dias = Number(inputDias.value);
+        for (var contador = 0; contador < 30; contador++) {
+            if (contador % dias == 0) {
+                divResposta.innerHTML += `Dia ${contador + 1} - Musculação<br>`;
+            } else {
+                divResposta.innerHTML += `Dia ${contador + 1} - Comer, dormir etc<br>`;
+            }
+
+        }
+    }
+</script>

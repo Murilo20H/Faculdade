@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 05</title>
+</head>
+<body>
+    <button onclick="imprimir()">Números cabalísticos</button>
+    <div id="divResposta"></div>
+</body>
+</html>
+<script>
+    function imprimir() {
+        for (var contador = 1; contador <= 30; contador++) {
+            if (contador == 3 || contador == 4 || contador == 7 || contador == 10 || contador == 12) {
+            } else {
+                divResposta.innerHTML += `${contador}<br>`;
+            }
+        }
+    }
+</script>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 18</title>
+</head>
+
+<body>
+    Digite quantas xícaras de café com leite você tomou na vida: <input type="number" id="inputQuantidadeXicaras"> <br><br>
+    <button onclick="ver()">Ver a quantidade</button><br><br>
+    <div id="divResposta"></div>
+</body>
+
+</html>
+<script>
+    function ver() {
+        var quantidadeXicaras = Number(inputQuantidadeXicaras.value);
+        var xicaras = "";
+
+        for (var contador = 1; contador <= quantidadeXicaras; contador++) {
+            if (contador % 2 == 1) {
+                xicaras += `<p style="color: red">Colher de café em pó</p>`;
+            }
+            xicaras += `<p style="color: blue">Colher com leite em pó</p>`;
+        }
+        divResposta.innerHTML = `${xicaras}`;
+    }
+</script>

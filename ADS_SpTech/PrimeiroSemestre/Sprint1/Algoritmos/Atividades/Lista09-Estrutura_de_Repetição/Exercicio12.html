@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 12</title>
+</head>
+
+<body>
+    Digite a tabuada: <input type="number" id="inputTabuada"> <br><br>
+    <button onclick="ver()">Ver Tabuada</button><br><br>
+    <div id="divResposta"></div>
+</body>
+
+</html>
+<script>
+    function ver() {
+        var tabuada = Number(inputTabuada.value);
+        var resultado = 0;
+        if (tabuada >= 2 && tabuada <= 9) {
+            for (var contador = 1; contador <= 12; contador++) {
+                resultado = tabuada * contador;
+                if (contador % 2 == 1) {
+                    divResposta.innerHTML += `<p style="color: red">${tabuada} x ${contador} = ${resultado}<br></p>`;
+
+                } else {
+                    divResposta.innerHTML += `<p style="color: blue">${tabuada} x ${contador} = ${resultado}<br></p>`;
+                }
+    
+            }
+        }
+    }
+</script>

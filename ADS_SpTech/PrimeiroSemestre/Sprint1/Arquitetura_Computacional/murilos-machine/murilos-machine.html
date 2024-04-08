@@ -62,7 +62,7 @@
         }
 
         .select-w-h {
-            width: 9.2vw;
+            width: 11.7vw;
             height: 2.3vw;
             font-size: 1.38vw;
             margin-bottom: 0.7vw;
@@ -173,7 +173,6 @@
             invalido = 0;
             aindaInvalido = 0;
             if (selectBase.value == '10') {
-                selectBase.value = null;
                 converterDecimal();
             } else if (selectBase.value == '8') {
                 converterOctal();
@@ -189,7 +188,7 @@
             let octal = decimal.toString(8);
             let hexadecimal = decimal.toString(16);
             let binario = decimal.toString(2);
-
+            
             if (numeroRecebido.value == '') {
                 document.getElementById("divOctal").innerHTML = `0`;
                 document.getElementById("divHexadecimal").innerHTML = `0`;
@@ -275,24 +274,28 @@
             } else if (selectBase.value == '10') {
                 h1Converter.innerHTML = "Converter Decimal:";
                 divConverter.innerHTML = '<div style="display: flex; flex-direction: row; justify-content: center;"> <input onchange="aparecer_octal()" class="check-w-h" type="checkbox" id="checkOctal"> <b class="font-color">Octal</b> </div> <div style="display: block;" class="resultado" id="divOctal"></div> <div style="display: flex; flex-direction: row; justify-content: center;"> <input onchange="aparecer_hexa()" class="check-w-h" type="checkbox" id="checkHexadecimal"> <b class="font-color">Hexadecimal</b> </div> <div style="display: block;" class="resultado" id="divHexadecimal"></div> <div style="display: flex; flex-direction: row; justify-content: center;"> <input onchange="aparecer_bin()" class="check-w-h" type="checkbox" id="checkBinario"> <b class="font-color">Binário</b> </div> <div style="display: block;" class="resultado" id="divBinario"></div>';
+                converterDecimal();
                 document.getElementById("checkOctal").checked = true;
                 document.getElementById("checkHexadecimal").checked = true;
                 document.getElementById("checkBinario").checked = true;
             } else if (selectBase.value == '8') {
                 h1Converter.innerHTML = "Converter Octal:";
                 divConverter.innerHTML = '<div style="display: flex; flex-direction: row; justify-content: center;"> <input onchange="aparecer_decimal()" class="check-w-h" type="checkbox" id="checkDecimal"> <b class="font-color">Decimal</b> </div> <div style="display: block;" class="resultado" id="divDecimal"></div> <div style="display: flex; flex-direction: row; justify-content: center;"> <input onchange="aparecer_hexa()" class="check-w-h" type="checkbox" id="checkHexadecimal"> <b class="font-color">Hexadecimal</b> </div> <div style="display: block;" class="resultado" id="divHexadecimal"></div> <div style="display: flex; flex-direction: row; justify-content: center;"> <input onchange="aparecer_bin()" class="check-w-h" type="checkbox" id="checkBinario"> <b class="font-color">Binário</b> </div> <div style="display: block;" class="resultado" id="divBinario"></div>';
+                converterOctal();
                 document.getElementById("checkDecimal").checked = true;
                 document.getElementById("checkHexadecimal").checked = true;
                 document.getElementById("checkBinario").checked = true;
             } else if (selectBase.value == '16') {
                 h1Converter.innerHTML = "Converter Hexadecimal:";
                 divConverter.innerHTML = '<div style="display: flex; flex-direction: row; justify-content: center;"> <input onchange="aparecer_decimal()" class="check-w-h" type="checkbox" id="checkDecimal"> <b class="font-color">Decimal</b> </div> <div style="display: block;" class="resultado" id="divDecimal"></div> <div style="display: flex; flex-direction: row; justify-content: center;"> <input onchange="aparecer_octal()" class="check-w-h" type="checkbox" id="checkOctal"> <b class="font-color">Octal</b> </div> <div style="display: block;" class="resultado" id="divOctal"></div> <div style="display: flex; flex-direction: row; justify-content: center;"> <input onchange="aparecer_bin()" class="check-w-h" type="checkbox" id="checkBinario"> <b class="font-color">Binário</b> </div> <div style="display: block;" class="resultado" id="divBinario"></div>';
+                converterHexadecimal();
                 document.getElementById("checkDecimal").checked = true;
                 document.getElementById("checkOctal").checked = true;
                 document.getElementById("checkBinario").checked = true;
             } else if (selectBase.value == '2') {
                 h1Converter.innerHTML = "Converter Binário:";
                 divConverter.innerHTML = '<div style="display: flex; flex-direction: row; justify-content: center;"> <input onchange="aparecer_decimal()" class="check-w-h" type="checkbox" id="checkDecimal"> <b  class="font-color">Decimal</b> </div> <div style="display: block;" class="resultado" id="divDecimal"></div> <div style="display: flex; flex-direction: row; justify-content: center;"> <input onchange="aparecer_octal()" class="check-w-h" type="checkbox" id="checkOctal"> <b class="font-color">Octal</b> </div> <div style="display: block;" class="resultado" id="divOctal"></div> <div style="display: flex; flex-direction: row; justify-content: center;"> <input onchange="aparecer_hexa()" class="check-w-h" type="checkbox" id="checkHexadecimal"> <b class="font-color">Hexadecimal</b> </div> <div style="display: block;" class="resultado" id="divHexadecimal"></div>';
+                converterBinario();
                 document.getElementById("checkDecimal").checked = true;
                 document.getElementById("checkOctal").checked = true;
                 document.getElementById("checkHexadecimal").checked = true;

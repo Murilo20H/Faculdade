@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 10</title>
+</head>
+
+<body>
+    Digite um início: <input type="number" id="inputInicio"> <br><br>
+    Digite uma final: <input type="number" id="inputFinal"> <br><br>
+    <button onclick="exibir()">S2 Pares</button><br><br>
+    <div id="divResposta"></div>
+</body>
+
+</html>
+<script>
+    function exibir() {
+        var inicio = Number(inputInicio.value);
+        var final = Number(inputFinal.value);
+        for (var contador = inicio; contador <= final; contador++) {
+            if (contador % 2 == 0) {
+                divResposta.innerHTML += `${contador}<br>`;
+            }
+        }
+    }
+</script>

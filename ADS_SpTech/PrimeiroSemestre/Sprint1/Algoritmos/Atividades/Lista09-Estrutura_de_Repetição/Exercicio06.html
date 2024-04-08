@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 06</title>
+</head>
+
+<body>
+    Digite o nome da pessoa que você mais ama: <input type="text" id="inputPessoa"> <br><br>
+    Digite o quanto você ama: <input type="number" id="inputQuantoAma"><br><br>
+    <button onclick="expressar()">Expressar amor</button><br><br>
+    <div id="divResposta"></div>
+</body>
+
+</html>
+<script>
+    function expressar() {
+        var pessoa = inputPessoa.value;
+        var quantoAma = Number(inputQuantoAma.value);
+        for (var contador = 1; contador <= quantoAma; contador++) {
+            divResposta.innerHTML += `${contador} - ${pessoa}, eu te amo! Sempre lembre disso!<br>`;
+        }
+    }
+</script>

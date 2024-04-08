@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 11</title>
+</head>
+
+<body>
+    Digite quantas voltas o carro dará na corrida: <input type="number" id="inputVoltas"> <br><br>
+    <button onclick="iniciar()">Iniciar corrida!</button><br><br>
+    <div id="divResposta"></div>
+</body>
+
+</html>
+<script>
+    function iniciar() {
+        var voltas = Number(inputVoltas.value);
+        for (var contador = 1; contador <= voltas; contador++) {
+            divResposta.innerHTML += `Carro dando a ${contador}ª volta<br>`;
+
+        }
+    }
+</script>

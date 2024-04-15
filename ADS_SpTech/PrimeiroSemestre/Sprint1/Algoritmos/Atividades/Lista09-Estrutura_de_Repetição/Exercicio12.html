@@ -9,6 +9,7 @@
 
 <body>
     Digite a tabuada: <input type="number" id="inputTabuada"> <br><br>
+    Digite o máximo: <input type="number" id="inputMaximo"> <br><br>
     <button onclick="ver()">Ver Tabuada</button><br><br>
     <div id="divResposta"></div>
 </body>
@@ -17,9 +18,10 @@
 <script>
     function ver() {
         var tabuada = Number(inputTabuada.value);
+        var maximo = Number(inputMaximo.value);
         var resultado = 0;
-        if (tabuada >= 2 && tabuada <= 9) {
-            for (var contador = 1; contador <= 12; contador++) {
+        if (tabuada >= 2 && tabuada <= 9 && maximo >= 1) {
+            for (var contador = 1; contador <= maximo; contador++) {
                 resultado = tabuada * contador;
                 if (contador % 2 == 1) {
                     divResposta.innerHTML += `<p style="color: red">${tabuada} x ${contador} = ${resultado}<br></p>`;

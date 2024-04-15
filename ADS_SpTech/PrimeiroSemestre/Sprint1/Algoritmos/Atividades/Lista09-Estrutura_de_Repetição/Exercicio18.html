@@ -18,12 +18,18 @@
     function ver() {
         var quantidadeXicaras = Number(inputQuantidadeXicaras.value);
         var xicaras = "";
+        var colherLeite = 0;
+        var colherCafe = 0;
 
         for (var contador = 1; contador <= quantidadeXicaras; contador++) {
-            if (contador % 2 == 1) {
-                xicaras += `<p style="color: red">Colher de café em pó</p>`;
-            }
-            xicaras += `<p style="color: blue">Colher com leite em pó</p>`;
+            colherLeite++;
+            xicaras += `<p>${colherLeite}º Colher de leite em pó</p><img style="width: 60px;" src="https://minhasaude.proteste.org.br/wp-content/uploads/2023/06/colher-carregando-punhado-de-leite-em-po-sobre-fundo-branco.jpg">`;
+        
+            colherCafe++;
+            xicaras += `<p>${colherCafe}º Colher com café em pó</p><img style="width: 60px;" src="https://dcdn.mitiendanube.com/stores/001/118/463/products/colher-medidora-de-cafe-felline-ceramica-11-8dec17baeaeaa0332a15889057444451-640-0.jpg">`;
+
+            colherCafe++;
+            xicaras += `<p>${colherCafe}º Colher com café em pó</p><img style="width: 60px;" src="https://dcdn.mitiendanube.com/stores/001/118/463/products/colher-medidora-de-cafe-felline-ceramica-11-8dec17baeaeaa0332a15889057444451-640-0.jpg"><br>`;
         }
         divResposta.innerHTML = `${xicaras}`;
     }

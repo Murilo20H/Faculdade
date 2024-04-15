@@ -16,7 +16,9 @@
 </html>
 <script>
     function exibir() {
+        divResposta.innerHTML = "";
         var dias = Number(inputDias.value);
+        
         for (var contador = 0; contador < 30; contador++) {
             if (contador % dias == 0) {
                 divResposta.innerHTML += `Dia ${contador + 1} - Musculação<br>`;

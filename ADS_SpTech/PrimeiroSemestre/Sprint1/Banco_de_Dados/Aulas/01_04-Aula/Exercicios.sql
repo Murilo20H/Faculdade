@@ -58,23 +58,19 @@ idOrganizador int primary key auto_increment,
 nome varchar(45),
 endereco varchar(80),
 email varchar(80),
-constraint checkEmail check (email LIKE '%@%.%'));
-
-ALTER TABLE Organizador auto_increment = 30;
+constraint checkEmail check (email LIKE '%@%.%'),
+fkOrganizadorExperiente int,
+CONSTRAINT fkOrganizadorOrganizadorExperiente FOREIGN KEY (fkOrganizadorExperiente) REFERENCES Organizador(idOrganizador)
+) auto_increment = 30;
 
 CREATE TABLE Campanha (
 idCampanha int primary key auto_increment,
 categoria varchar(45),
 instituicao varchar(45),
-dataFinal date);
-
-ALTER TABLE Campanha auto_increment = 500;
-
-ALTER TABLE Organizador ADD COLUMN fkOrganizadorExperiente int,
-	ADD CONSTRAINT fkOrganizadorOrganizadorExperiente FOREIGN KEY (fkOrganizadorExperiente) REFERENCES Organizador(idOrganizador);
-
-ALTER TABLE Campanha ADD COLUMN fkOrganizador int,
-	ADD CONSTRAINT fkCampanhaOrganizador FOREIGN KEY (fkOrganizador) REFERENCES Organizador(idOrganizador);
+dataFinal date,
+fkOrganizador int,
+CONSTRAINT fkCampanhaOrganizador FOREIGN KEY (fkOrganizador) REFERENCES Organizador(idOrganizador)
+) auto_increment = 500;
 
 INSERT INTO Organizador (nome, endereco, email) VALUES
 ('Jorge', 'Rua Mato Grosso - Morro Branco', 'jorgesilva@hotmail.com'),

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 1</title>
+</head>
+<style>
+    * {
+        font-size: 25px;
+    }
+</style>
+<body>
+    <h1>Calculadora SpTech</h1>
+    Número 1: <input type="number" id="numero1">
+    <br>
+    Número 2: <input type="number" id="numero2">
+    <br> <br>
+    Operação Matemática: <br>
+    <button onclick="adicionar()">ADIÇÃO</button> <br>
+    <button onclick="subtrair()">SUBTRAÇÃO</button> <br>
+    <button onclick="multiplicar()">MULTIPLICAÇÃO</button> <br>
+    <button onclick="dividir()">DIVISÃO</button>
+        
+</body>
+</html>
+
+<script>
+    function adicionar() {
+        alert(numero1.value + ' + ' + numero2.value + ' = ' + (Number(numero1.value) + Number(numero2.value)))
+    }
+
+    function subtrair() {
+        alert(numero1.value + ' - ' + numero2.value + ' = ' + (numero1.value - numero2.value))
+    }
+
+    function multiplicar() {
+        alert(numero1.value + ' X ' + numero2.value + ' = ' + (numero1.value * numero2.value))
+    }
+
+    function dividir() {
+        alert(numero1.value + ' / ' + numero2.value + ' = ' + (numero1.value / numero2.value))
+    }
+</script>

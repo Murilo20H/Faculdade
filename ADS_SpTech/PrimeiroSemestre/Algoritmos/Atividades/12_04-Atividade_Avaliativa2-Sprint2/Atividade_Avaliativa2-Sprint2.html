@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade Avaliativa 2 - Murilo Henrique</title>
+</head>
+<body>
+    <h1>Atividade Avaliativa 2 - Sprint 2: Murilo Henrique</h1>
+
+    Episódio que deseja começar assistindo: <input id="inputEpisodio" type="number"><br>
+
+    Quantidade de tempo disponível: <input id="inputTempoDisponivel" type="number"><br>
+
+    Unidade de tempo em: <select id="selectUnidadeTempo">
+        <option value="#">Selecione uma opção</option>
+        <option value="1">Horas</option>
+        <option value="2">Minutos</option>
+    </select><br>
+
+    Pular abertura? <select id="selectAbertura">
+        <option value="#">Selecione uma opção</option>
+        <option value="1">Sim</option>
+        <option value="2">Não</option>
+    </select><br>
+    
+    Pular encerramento? <select id="selectEncerramento">
+        <option value="#">Selecione uma opção</option>
+        <option value="1">Sim</option>
+        <option value="2">Não</option>
+    </select><br>
+
+    <button onclick="assistir()">Assistir Episódios</button><br>
+
+    <div id="divResposta"></div>
+</body>
+</html>
+<script>
+    function assistir() {
+        var episodio = Number(inputEpisodio.value);
+        var tempoDisponivel = Number(inputTempoDisponivel.value);
+        var unidadeTempo = selectUnidadeTempo.value;
+        var abertura = selectAbertura.value;
+        var encerramento = selectEncerramento.value;
+
+        var temAbertura = true;
+        var temEncerramento = true;
+        var episodioDuracao = 24;
+
+        var episodiosAssistidos = 0;
+
+        var mensagem = "";
+
+        if (episodio >= 1 && episodio <= 1100) {
+            if (unidadeTempo == "1") {
+                tempoDisponivel *= 60;
+            } else if (unidadeTempo == "#") {
+                mensagem += `Como não foi indicado a unidade de medida, vamos usar minutos.<br>`;
+            }
+
+            if (abertura == "1") {
+                temAbertura = false;
+                episodioDuracao -= 2;
+            } else if (abertura == "#") {
+                mensagem += `Como não foi indicado se tem abertura, vamos exibi-la.<br>`;
+            }
+            
+            if (encerramento == "1") {
+                temEncerramento = false;
+                episodioDuracao -= 2;
+            } else if (encerramento == "#") {
+                mensagem += `Como não foi indicado se tem encerramento, vamos exibi-lo.<br>`;
+            }
+
+            if (tempoDisponivel <= 0) {
+                mensagem += `Tempo insuficiente!<br>`;
+            } else {
+                episodiosAssistidos = tempoDisponivel / episodioDuracao;
+            }
+
+            for (var contadorEpisodio = episodio; tempoDisponivel > 0; contadorEpisodio++) {
+                mensagem += `Episódio: ${contadorEpisodio}<br>`;
+                
+                for (var contadorMinuto = 1; contadorMinuto <= episodioDuracao; contadorMinuto++) {
+                    
+                    if (tempoDisponivel > 0) {
+                        if (temAbertura && contadorMinuto <= 2) {
+                            mensagem += `Minuto ${contadorMinuto}: Assistindo Abertura<br>`;
+                        } else if (temEncerramento && contadorMinuto > (episodioDuracao - 2)) {
+                            mensagem += `Minuto ${contadorMinuto}: Assistindo Encerramento<br>`;
+                        } else {
+                            mensagem += `Minuto ${contadorMinuto}: Assistindo o Episódio<br>`;
+                        }
+                        tempoDisponivel--;
+                    }
+
+                }
+
+                if (contadorEpisodio == 1100 && tempoDisponivel > 0) {
+                    mensagem += `<p style="color: red">Parabéns, você terminou a série, recomeçaremos ela para você!</p>`;
+                    contadorEpisodio = 0;
+                }
+                mensagem += "<br>";
+
+            }
+            mensagem += `Fim dos episódios!<br>Foram assistidos: ${episodiosAssistidos} episódios`;
+            divResposta.innerHTML = mensagem;
+        } else {
+            alert("O número do episódio é inválido");
+        }
+    
+    }
+</script>

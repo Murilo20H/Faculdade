@@ -1,0 +1,26 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 06</title>
+</head>
+
+<body>
+    Digite o seu ranking de filmes favoritos em ordem: <input type="text" id="input_filme"><br>
+    <button onclick="cadastrar()">Cadastrar filme</button>
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    var lista_filmes = [];
+
+    function cadastrar() {
+        var filme = input_filme.value;
+        
+        lista_filmes.push(filme)
+        
+        div_mensagem.innerHTML += `${filme}<br>`;
+    }
+</script>

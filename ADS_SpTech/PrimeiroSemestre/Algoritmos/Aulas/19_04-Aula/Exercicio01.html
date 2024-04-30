@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 01</title>
+</head>
+<body>
+    <button onclick="gerar()">Gerar Aleatório</button>
+    <button onclick="gerar0e10()">Gerar Aleatório Entre 0 e 10</button>
+    <button onclick="gerar5e20()">Gerar Aleatório Entre 5 e 20</button>
+    <button onclick="gerarm50e50()">Gerar Aleatório Entre -50 e 50</button>
+    <button onclick="sortear3()">Sortear Entre 1 e 5</button><br><br>
+    Mínimo: <input id="inputMinimo" type="number"><br>
+    Máximo<input id="inputMaximo" type="number"><br>
+    <button onclick="gerarPersonalizado()">Gerar Aleatório Personalizado</button><br><br>
+    <div id="divMensagem"></div>
+</body>
+</html>
+
+<script>
+    
+    function gerar(){
+        var mensagem = "";
+        var numeroAleatorio = Math.random();
+        mensagem += `Sorteado: ${numeroAleatorio}`;
+        divMensagem.innerHTML = mensagem;
+    }
+    
+    function gerar0e10() {
+        var mensagem = "";
+        var numeroAleatorio = Math.random();
+        var novoAleatorio = numeroAleatorio * 10;
+        mensagem += `Sorteado ${numeroAleatorio}<br>Novo: ${novoAleatorio}`;
+        divMensagem.innerHTML = mensagem;
+    }
+
+    function gerar5e20() {
+        var mensagem = "";
+        var numeroAleatorio = Math.random();
+        var novoAleatorio = numeroAleatorio * (20 - 5) + 5;
+        mensagem += `Sorteado ${numeroAleatorio}<br>Novo: ${novoAleatorio}`;
+        divMensagem.innerHTML = mensagem;
+    }
+
+    function gerarm50e50() {
+        var mensagem = "";
+        var minimo = -50;
+        var maximo = 50;
+        var intervalo = maximo - minimo;
+        var numeroAleatorio = Math.random();
+        var novoAleatorio = numeroAleatorio * intervalo + minimo;
+        var decimal = novoAleatorio.toFixed(2);
+        var inteiro = novoAleatorio.toFixed(0);
+        mensagem += `Sorteado ${numeroAleatorio}<br>Novo: ${novoAleatorio}<br>Decimal: ${decimal}<br>Inteiro: ${inteiro}`;
+        divMensagem.innerHTML = mensagem;
+    }
+
+    function gerarPersonalizado() {
+        var mensagem = "";
+        var minimo = Number(inputMinimo.value);
+        var maximo = Number(inputMaximo.value);
+        var intervalo = maximo - minimo;
+        var numeroAleatorio = Math.random();
+        var novoAleatorio = numeroAleatorio * intervalo + minimo;
+        mensagem += `Sorteado ${numeroAleatorio}<br>Novo: ${novoAleatorio}`;
+        divMensagem.innerHTML = mensagem;
+    }
+
+    function sortear3() {
+        var aleatorio = (Math.random() * 4 + 1).toFixed(0);
+
+        for(var cont = 1; aleatorio != 3; cont++) {
+            aleatorio = (Math.random() * 4 + 1).toFixed(0);
+        }
+
+        divMensagem.innerHTML = `Você sorteou o número 3 em ${cont} tentativas`;
+    }
+</script>

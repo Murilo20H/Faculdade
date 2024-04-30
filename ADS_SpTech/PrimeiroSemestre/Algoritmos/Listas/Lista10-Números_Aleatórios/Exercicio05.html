@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 05</title>
+</head>
+<body>
+    Digite quantas rodadas serão sorteados: <input type="text" id="inputRodadas"> <br><br>
+    <select id="selectEscolha">
+        <option value="#">Escolha</option>
+        <option value="1">ÍMPAR</option>
+        <option value="2">PAR</option>
+    </select><br><br>
+    <button onclick="jogar()">Jogar</button>
+    <div id="divMensagem"></div>
+</body>
+</html>
+
+<script>
+    function jogar(){
+        var rodadas = Number(inputRodadas.value);
+        var escolha = selectEscolha.value;
+        var mensagem = "";
+
+        var ehPar = true;
+        var pontosUsuario = 0;
+        var pontosPrograma = 0;
+
+        for (var contador = 1; contador <= rodadas; contador++) {
+            var numeroAleatorio = '"' + ((Math.random()) * 10) + '"';
+            
+            if (numeroAleatorio[1] % 2 == 0) {
+                mensagem += `<span>Partida ${contador}: o número sorteado é <b style="color: blue">${numeroAleatorio[1]}</b> e ele é PAR, `;
+                ehPar = true;
+            } else {
+                ehPar = false;
+                mensagem += `<span>Partida ${contador}: o número sorteado é <b style="color: blue">${numeroAleatorio[1]}</b> e ele é ÍMPAR, `;
+            }
+            
+            if ((ehPar && escolha == "2") || (ehPar != true && escolha == "1")) {
+                pontosUsuario++;
+                mensagem += ` usuário <b style="text-decoration: underline; color: green">VENCEU!!</b> Pontos usuário: ${pontosUsuario}</span><br><br>`;
+            } else {
+                pontosPrograma++;
+                mensagem += ` usuário <b style="text-decoration: underline; color: red">PERDEU!!</b> Pontos programa: ${pontosPrograma}</span><br><br>`;
+            }
+        }
+
+        mensagem += `<br>Pontuação Final: <br>Usuário: ${pontosUsuario}<br>Programa: ${pontosPrograma}<br>`;
+        if (pontosUsuario > pontosPrograma) {
+            mensagem += `<br>Parabéns usuário, você foi o grande <b style="text-decoration: underline; color: green">CAMPEÃO!</b>`;
+        } else if (pontosUsuario < pontosPrograma) {
+            mensagem += `<br>Infelizmente o usuário perdeu!`;
+        } else {
+            mensagem += `<br>Deu empate!`;
+        }
+        divMensagem.innerHTML = mensagem;
+    }
+</script>

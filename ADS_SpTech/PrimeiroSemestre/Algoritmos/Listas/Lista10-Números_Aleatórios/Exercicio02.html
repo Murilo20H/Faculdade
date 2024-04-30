@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 02</title>
+</head>
+<body>
+    Digite quantos números serão sorteados: <input type="text" id="inputNumeros"> <br><br>
+    <button onclick="sortear()">Sortear</button>
+    <div id="divMensagem"></div>
+</body>
+</html>
+
+<script>
+    function sortear(){
+        var numeros = Number(inputNumeros.value);
+        var contadorAbaixoMedia = 0;
+        var mensagem = "";
+
+        for (var contador = 1; contador <= numeros; contador++) {
+            var numeroAleatorio = Math.random();
+            
+            if (numeroAleatorio >= 0.5) {
+                mensagem += `${numeroAleatorio} está na metade <b style="color: #FFA500">superior</b> dos números<br>`;
+            } else {
+                contadorAbaixoMedia++;
+                mensagem += `${numeroAleatorio} está na metade <b style="color: #00FF00">inferior</b> dos números<br>`;
+            }
+        }
+        mensagem += `<br>TOTAL DE NÚMEROS SORTEADOS <b style="color: #00FF00">ABAIXO DA METADE</b> = ${contadorAbaixoMedia}`;
+        
+        divMensagem.innerHTML = mensagem;
+    }
+</script>

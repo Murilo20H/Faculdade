@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 02</title>
+</head>
+<body>
+    Frase: <input type="text" id="input_frase"><br>
+    <button onclick="exibir()">Exibir</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function exibir() {
+        div_mensagem.innerHTML = "";
+        var frase = input_frase.value;
+        var tamanho_frase = frase.length;
+
+        if (tamanho_frase >= 5) {
+            for (var letra = 0; letra < tamanho_frase; letra++) {
+                var letra_atual = frase[letra]
+                div_mensagem.innerHTML += `
+                ${letra_atual} <br>`;
+            }
+        } else {
+            alert("Deve ter ao menos 5 letras");
+        }
+    }
+</script>

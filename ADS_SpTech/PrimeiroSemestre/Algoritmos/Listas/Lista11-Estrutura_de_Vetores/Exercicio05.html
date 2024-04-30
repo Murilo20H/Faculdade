@@ -1,0 +1,40 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 05</title>
+</head>
+
+<body>
+    Digite o seu ranking de filmes favoritos em ordem: <input type="text" id="input_filme"><br>
+    <button onclick="cadastrar()">Cadastrar filme</button>
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    var lista_filmes = [];
+    var contador_filmes = 0;
+
+    function cadastrar() {
+        div_mensagem.innerHTML = ``;
+        var filme = input_filme.value;
+        
+        lista_filmes.push(filme)
+        
+        div_mensagem.innerHTML += `Filme adicionado!<br>`;
+        contador_filmes++;
+        
+        div_mensagem.innerHTML += `Seu filme favorito: ${lista_filmes[0]}<br>`;
+
+        for (var contador = 0; contador < lista_filmes.length; contador++) {
+            div_mensagem.innerHTML += ``;
+        }
+        if (contador_filmes < 3) {
+            div_mensagem.innerHTML += `Seu 3º filme favorito: Ainda não existe<br>Total de filmes cadastrados: ${lista_filmes.length}`;
+        } else {
+            div_mensagem.innerHTML += `Seu 3º filme favorito: ${lista_filmes[2]}<br>Total de filmes cadastrados: ${lista_filmes.length}`;
+        }
+    }
+</script>

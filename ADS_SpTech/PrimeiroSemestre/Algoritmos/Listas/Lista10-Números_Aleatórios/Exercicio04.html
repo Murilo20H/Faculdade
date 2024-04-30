@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 04</title>
+</head>
+<body>
+    Digite quantos números serão sorteados: <input type="text" id="inputNumeros"> <br>
+    <button onclick="gerar()">Gerar Aleatórios</button>
+    <div id="divMensagem"></div>
+</body>
+</html>
+
+<script>
+    function gerar(){
+        var numeros = Number(inputNumeros.value);
+        var mensagem = "";
+
+        var contadorQuartil1 = 0;
+        var maiorNumeroQuartil1 = 0;
+        var menorNumeroQuartil1 = 1;
+        
+        var contadorQuartil2 = 0;
+        var maiorNumeroQuartil2 = 0;
+        var menorNumeroQuartil2 = 1;
+        
+        var contadorQuartil3 = 0;
+        var maiorNumeroQuartil3 = 0;
+        var menorNumeroQuartil3 = 1;
+        
+        var contadorQuartil4 = 0;
+        var maiorNumeroQuartil4 = 0;
+        var menorNumeroQuartil4 = 1;
+
+
+        for (var contador = 1; contador <= numeros; contador++) {
+            var numeroAleatorio = Math.random();
+            
+            if (numeroAleatorio >= 0.75) {
+                mensagem += `${numeroAleatorio} está no <b style="color: #FFA500">1º quartil</b><br>`;
+                contadorQuartil1++;
+                if (numeroAleatorio > maiorNumeroQuartil1) {
+                    maiorNumeroQuartil1 = numeroAleatorio;
+                }
+                
+                if (numeroAleatorio < menorNumeroQuartil1) {
+                    menorNumeroQuartil1 = numeroAleatorio;
+                }
+            } else if (numeroAleatorio >= 0.5) {
+                mensagem += `${numeroAleatorio} está no <b style="color: #00FF00">2º quartil</b><br>`;
+                contadorQuartil2++;
+                if (numeroAleatorio > maiorNumeroQuartil2) {
+                    maiorNumeroQuartil2 = numeroAleatorio;
+                }
+                
+                if (numeroAleatorio < menorNumeroQuartil2) {
+                    menorNumeroQuartil2 = numeroAleatorio;
+                }
+            } else if (numeroAleatorio >= 0.25) {
+                mensagem += `${numeroAleatorio} está no <b style="color: #FF00FF">3º quartil</b><br>`;
+                contadorQuartil3++;
+                if (numeroAleatorio > maiorNumeroQuartil3) {
+                    maiorNumeroQuartil3 = numeroAleatorio;
+                }
+                
+                if (numeroAleatorio < menorNumeroQuartil3) {
+                    menorNumeroQuartil3 = numeroAleatorio;
+                }
+            } else if (numeroAleatorio < 0.25) {
+                mensagem += `${numeroAleatorio} está no <b style="color: #FF0000">4º quartil</b><br>`;
+                contadorQuartil4++;
+                if (numeroAleatorio > maiorNumeroQuartil4) {
+                    maiorNumeroQuartil4 = numeroAleatorio;
+                }
+
+                if (numeroAleatorio < menorNumeroQuartil4) {
+                    menorNumeroQuartil4 = numeroAleatorio;
+                }
+            }
+        }
+        
+        mensagem += `<br><b style="color: #FFA500">1º QUARTIL</b><br>TOTAL DE NÚMEROS SORTEADOS = ${contadorQuartil1}<br>MAIOR NÚMERO SORTEADO = ${maiorNumeroQuartil1}<br>MENOR NÚMERO SORTEADO = ${menorNumeroQuartil1}<br><br>
+        <b style="color: #00FF00">2º QUARTIL</b><br>TOTAL DE NÚMEROS SORTEADOS = ${contadorQuartil2}<br>MAIOR NÚMERO SORTEADO = ${maiorNumeroQuartil2}<br>MENOR NÚMERO SORTEADO = ${menorNumeroQuartil2}<br><br>
+        <b style="color: #FF00FF">3º QUARTIL</b><br>TOTAL DE NÚMEROS SORTEADOS = ${contadorQuartil3}<br>MAIOR NÚMERO SORTEADO = ${maiorNumeroQuartil3}<br>MENOR NÚMERO SORTEADO = ${menorNumeroQuartil3}<br><br>
+        <b style="color: #FF0000">4º QUARTIL</b><br>TOTAL DE NÚMEROS SORTEADOS = ${contadorQuartil4}<br>MAIOR NÚMERO SORTEADO = ${maiorNumeroQuartil4}<br>MENOR NÚMERO SORTEADO = ${menorNumeroQuartil4}<br><br>`;
+
+        divMensagem.innerHTML = mensagem;
+    }
+</script>

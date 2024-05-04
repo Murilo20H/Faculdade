@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="exibir()">Exibir</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    var lista_booleans = [];
+    lista_booleans.push("true", "false");
+
+    function exibir() {
+        var booleana = Math.random > 0.5;
+        lista_booleans.push(booleana, "texto", 123, 12.5);
+        var tamanho_lista = lista_booleans.length;
+        
+        for (var contador = 0; contador < tamanho_lista; contador++) {
+            var elemento_atual = lista_booleans[contador];
+            div_mensagem.innerHTML += `${elemento_atual} - ${typeof elemento_atual} <br>`;
+        }
+
+    }
+</script>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade - Murilo</title>
+</head>
+<body>
+    Digite a quantidade de macarons que você gostaria de comprar: <input type="number" id="input_quantidade_macarons"><br>
+    Digite a quantidade de brigadeiros gourmets que você gostaria de comprar: <input type="number" id="input_quantidade_brigadeiros"><br>
+    Digite a quantidade de cupcakes que você gostaria de comprar: <input type="number" id="input_quantidade_cupcakes"><br>
+    Digite a quantidade de cheesecakes que você gostaria de comprar: <input type="number" id="input_quantidade_cheesecakes"><br>
+
+    <br><br>
+
+    Digite o preço do macaron: <input type="number" id="input_preco_macarons"><br>
+    Digite o preço do brigadeiro gourmet: <input type="number" id="input_preco_brigadeiros"><br>
+    Digite o preço do cupcake: <input type="number" id="input_preco_cupcakes"><br>
+    Digite o preço do cheesecake: <input type="number" id="input_preco_cheesecakes"><br>
+
+    <br><br>
+
+    <button onclick="verificar()">Verificar Vendas</button>
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function verificar() {
+        var quantidade_macarons = Number(input_quantidade_macarons.value);
+        var quantidade_brigadeiros = Number(input_quantidade_brigadeiros.value);
+        var quantidade_cupcakes = Number(input_quantidade_cupcakes.value);
+        var quantidade_cheesecakes = Number(input_quantidade_cheesecakes.value);
+
+        var preco_macarons = Number(input_preco_macarons.value);
+        var preco_brigadeiros = Number(input_preco_brigadeiros.value);
+        var preco_cupcakes = Number(input_preco_cupcakes.value);
+        var preco_cheesecakes = Number(input_preco_cheesecakes.value);
+
+        var caminho_macaron = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS19_KJDYB8_U-ZIGYnqIAgHd2jod49wlz2Dg&usqp=CAU";
+        var caminho_brigadeiro = "https://i.panelinha.com.br/i1/64-bk-2859-brigadeiro.webp";
+        var caminho_cupcake = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROcoE_6E7FRFRpf0VqKoTB9psVD-L0cpYPvrV0HUF0Vo-9z-sbiD8hKdzDxvRpM8aQ1VE&usqp=CAU";
+        var caminho_cheesecake = "https://s2-receitas.glbimg.com/8QGipHvweOXdi0rq9cmyNyW0eQw=/0x0:1280x854/924x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_e84042ef78cb4708aeebdf1c68c6cbd6/internal_photos/bs/2020/f/z/NC0azsRqaYfFLPbNR1gQ/cheesecake.jpeg";
+
+        var mensagem = "";
+        var quantidade_doces = quantidade_brigadeiros + quantidade_cheesecakes + quantidade_cupcakes + quantidade_macarons;
+        var preco_total = 0;
+
+        if (quantidade_macarons >= 0 && quantidade_brigadeiros >= 0 && quantidade_cupcakes >= 0 && quantidade_cheesecakes >= 0) {
+
+            if (preco_macarons >= 0 && preco_brigadeiros >= 0 && preco_cupcakes >= 0 && preco_cheesecakes >= 0) {
+
+                
+                for (var contador = 1; contador <= quantidade_doces; contador++) {
+                    console.log(quantidade_macarons)
+                    if (quantidade_macarons > 0) {
+                        mensagem += `Venda ${contador} - <img style="width: 50px; height: auto;" src="${caminho_macaron}"> - R$${preco_macarons}<br><br>`;
+                        quantidade_macarons--;
+                        preco_total += preco_macarons;
+                        
+                    } else if (quantidade_brigadeiros > 0) {
+                        mensagem += `Venda ${contador} - <img style="width: 50px; height: auto;" src="${caminho_brigadeiro}"> - R$${preco_brigadeiros}<br><br>`;
+                        quantidade_brigadeiros--;
+                        preco_total += preco_brigadeiros;
+                        
+                    } else if (quantidade_cupcakes > 0) {
+                        mensagem += `Venda ${contador} - <img style="width: 50px; height: auto;" src="${caminho_cupcake}"> - R$${preco_cupcakes}<br><br>`;
+                        quantidade_cupcakes--;
+                        preco_total += preco_cupcakes;
+                        
+                    } else if (quantidade_cheesecakes > 0) {
+                        mensagem += `Venda ${contador} - <img style="width: 50px; height: auto;" src="${caminho_cheesecake}"> - R$${preco_cheesecakes}<br><br>`;
+                        quantidade_cheesecakes--;
+                        preco_total += preco_cheesecakes;
+                        
+                    }
+                }
+                
+                mensagem += `<br>Com a quantidade de ${Number(input_quantidade_macarons.value)} Macarons, ${Number(input_quantidade_brigadeiros.value)} Brigadeiros, ${Number(input_quantidade_cupcakes.value)} Cupcakes e ${Number(input_quantidade_cheesecakes.value)} Cheesecakes, a venda totalizará R$${preco_total}`;
+                
+            } else {
+                mensagem = "O preço de algum doce está incorreto!";
+            }
+        } else {
+            mensagem = "A quantidade de doces escolhida está incorreta!";
+        }
+        div_mensagem.innerHTML = mensagem;
+    }
+</script>

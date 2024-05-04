@@ -28,10 +28,11 @@
     
     function relembrar() {
         var numero = Number(input_numero.value);
+        var tamanho_lista = lista_bairros.length;
 
         if (numero < 1) {
             div_mensagem.innerHTML += `Número inválido!<br>`;
-        } else if (lista_bairros.length < numero) {
+        } else if (tamanho_lista < numero) {
             div_mensagem.innerHTML += `Você ainda não morou num ${numero}º bairro!<br>`;
         } else {
             div_mensagem.innerHTML += `${lista_bairros[(numero - 1)]}<br>`;

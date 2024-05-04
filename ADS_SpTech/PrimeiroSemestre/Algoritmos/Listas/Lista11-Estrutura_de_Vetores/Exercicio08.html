@@ -1,0 +1,32 @@
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 08</title>
+</head>
+
+<body>
+    Nome do aluno: <input type="text" id="input_aluno"><br>
+    <button onclick="cadastrar()">Cadastrar</button>
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    var lista_alunos = [];
+
+    function cadastrar() {
+        var aluno = input_aluno.value;
+        var mensagem = "";
+        
+        lista_alunos.push(aluno)
+        var tamanho_lista = lista_alunos.length;
+        
+        for (var contador = tamanho_lista; contador > 0; contador--) {
+            mensagem += `${lista_alunos[contador - 1]}<br>`
+        }
+
+        div_mensagem.innerHTML = mensagem;
+    }
+</script>

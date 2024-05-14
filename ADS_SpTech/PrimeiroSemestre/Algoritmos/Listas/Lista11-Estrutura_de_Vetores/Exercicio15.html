@@ -1,0 +1,44 @@
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 15</title>
+</head>
+
+<body>
+    Nome do produto: <input type="text" id="input_nome"><br>
+    Preço de compra: <input type="number" id="input_preco"><br>
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="relatar()">Relatório de estoque</button>
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    var lista_nomes = [];
+    var lista_precos = [];
+    
+    function cadastrar() {
+        var nome = input_nome.value;
+        var preco = Number(input_preco.value);
+        
+        lista_nomes.push(nome)
+        lista_precos.push(preco)
+    }
+
+    function relatar() {
+        var nome = input_nome.value;
+        var preco = Number(input_preco.value);
+        var mensagem = `Total de produtos: ${lista_nomes.length} <br>`;
+        var tamanho_lista = lista_nomes.length;
+
+        for (var contador = 0; contador < tamanho_lista; contador++) {
+            var preco_venda = lista_precos[contador] * 1.25;
+            mensagem += `Produto ${contador + 1}: ${lista_nomes[contador]}<br>`
+            mensagem += `Preço de compra: R$${lista_precos[contador]}. Vender por R$${preco_venda}<br><br>`
+        }
+
+        div_mensagem.innerHTML = mensagem;
+    }
+</script>

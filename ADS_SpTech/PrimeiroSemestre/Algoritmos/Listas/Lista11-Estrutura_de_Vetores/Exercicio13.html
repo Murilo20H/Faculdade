@@ -1,0 +1,60 @@
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 13</title>
+</head>
+
+<body>
+    Indique o resultado: <select id="select_resultado">
+        <option value="vitória">Vitória</option>
+        <option value="empate">Empate</option>
+        <option value="derrota">Derrota</option>
+    </select><br>
+    <button onclick="registrar()">Registrar jogo</button><br>
+    Indique qual jogo deseja saber o resultado: <input oninput="indicar()" type="text" id="input_jogo"><br>
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    var lista_resultados = [];
+    var vitorias = 0;
+    var empates = 0;
+    var derrotas = 0;
+    
+    function registrar() {
+        var resultado = select_resultado.value;
+        lista_resultados.push(resultado);
+        
+        if (resultado == "vitória") {
+            vitorias++;
+        } else if (resultado == "empate") {
+            empates++;
+        } else if (resultado == "derrota") {
+            derrotas++;
+        }
+        
+        var pontuacao = (vitorias * 3) + (empates * 1);
+        var aproveitamento = 100 * pontuacao / (lista_resultados.length * 3);
+
+        div_mensagem.innerHTML = `O time teve: ${vitorias} vitórias, ${empates} empates, ${derrotas} derrotas<br>Pontuação total: ${pontuacao} pontos<br>Aproveitamento: ${aproveitamento}%`;
+    }
+    
+    function indicar() {
+        var jogo = input_jogo.value;
+
+        if (jogo > lista_resultados.length) {
+            div_mensagem.innerHTML = `Não foi cadastrado um ${jogo}º jogo`;
+        } else {
+            if (lista_resultados[jogo - 1] == "vitória") {
+                div_mensagem.innerHTML = `No ${jogo}º jogo, o time Ganhou`;
+            } else if (lista_resultados[jogo - 1] == "empate") {
+                div_mensagem.innerHTML = `No ${jogo}º jogo, o time Empatou`;
+            } else {
+                div_mensagem.innerHTML = `No ${jogo}º jogo, o time Perdeu`;
+            }
+        }
+    }
+</script>

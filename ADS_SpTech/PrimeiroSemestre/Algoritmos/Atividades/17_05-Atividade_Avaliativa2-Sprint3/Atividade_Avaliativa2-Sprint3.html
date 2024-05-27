@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade Avaliativa 2 - Sprint 3</title>
+</head>
+
+<body>
+    <div id="tela_blend">
+        Digite o nome do ingrediente: <input type="text" id="input_ingrediente_blend"><br>
+        Digite o peso do ingrediente: <input type="text" id="input_peso_gramas_ingrediente"><br>
+        Digite o preço por kilo: <input type="text" id="input_preco_kilo_ingrediente"><br>
+        <button onclick="adicionar_ingrediente_blend()">Adicionar Ingrediente no Blend</button><br><br>
+        Digite o nome do hamburguer: <input type="text" id="input_nome_blend"><br>
+        <button onclick="registrar_blend()">Preparar Blend e Registrar</button><br><br>
+        <button onclick="montar_cardapio()">Montar Cardápio</button><br><br>
+        <div id="div_mensagem_blend"></div>
+    </div>
+
+    <div id="tela_cardapio">
+        Digite o tipo de hamburguer: <input type="text" id="input_tipo_hamburguer"><br>
+        Digite a quantidade de hamburgueres: <input type="text" id="input_quantidade_hamburgueres"><br>
+        Escolha o tipo de queijo: <select id="select_queijo">
+            <option value="sem_queijo">Sem Queijo</option>
+            <option value="mussarela">Mussarela</option>
+            <option value="prato">Prato</option>
+            <option value="cheddar">Cheddar</option>
+        </select><br>
+        Terá cebola: <select id="select_cebola">
+            <option value="sim">Sim</option>
+            <option value="nao">Não</option>
+        </select><br>
+        Terá alface: <select id="select_alface">
+            <option value="sim">Sim</option>
+            <option value="nao">Não</option>
+        </select><br>
+        Terá tomate: <select id="select_tomate">
+            <option value="sim">Sim</option>
+            <option value="nao">Não</option>
+        </select><br>
+        <button onclick="adicionar_lanche()">Adicionar Lanche ao Cardápio</button><br><br>
+        <div id="div_mensagem_cardapio"></div>
+    </div>
+</body>
+
+</html>
+<script>
+    tela_cardapio.style.display = "none";
+
+    var ingredientes_blend = [];
+    var peso_gramas_ingredientes = [];
+    var preco_kilo_ingredientes = [];
+
+    var nome_blend = [];
+    var peso_blend = [];
+    var preco_blend = [];
+
+    function adicionar_ingrediente_blend() {
+        var ingrediente = input_ingrediente_blend.value;
+        var peso_gramas = Number(input_peso_gramas_ingrediente.value);
+        var preco_kilo = Number(input_preco_kilo_ingrediente.value);
+
+        if (ingrediente == "" || ingrediente.length < 3 || ingrediente.indexOf(ingrediente) == -1) {
+            div_mensagem_blend.innerHTML = '<b style="color: red">Campo nome do ingrediente inválido.</b>';
+        } else if (peso_gramas == "" || peso_gramas <= 0) {
+            div_mensagem_blend.innerHTML = '<b style="color: red">Campo peso inválido.</b>';
+        } else if (preco_kilo == "" || preco_kilo <= 0) {
+            div_mensagem_blend.innerHTML = '<b style="color: red">Campo preço inválido.</b>';
+        } else if (ingredientes_blend.indexOf(ingrediente) != -1) {
+            div_mensagem_blend.innerHTML = `<b style="color: red">O ingrediente "${ingrediente}" já foi adicionado nesta mistura!</b>`;
+        } else {
+            div_mensagem_blend.innerHTML = `<b style="color: rgb(0, 190, 0)">Adicionados ${peso_gramas} gramas de "${ingrediente}" no blend do hamburguer!</b>`;
+            ingredientes_blend.push(ingrediente);
+            peso_gramas_ingredientes.push(peso_gramas);
+            preco_kilo_ingredientes.push(preco_kilo);
+        }
+    }
+
+    function registrar_blend() {
+        var novo_nome_blend = input_nome_blend.value
+        var mensagem = "";
+        var preco_ingrediente = 0;
+        var novo_preco_blend = 0;
+        var novo_peso_blend = 0;
+
+        if (ingredientes_blend.length < 2) {
+            div_mensagem_blend.innerHTML = '<b style="color: red">Adicione ao menos 2 ingredientes para o blend do hamburguer.</b>';
+        } else if (novo_nome_blend.length < 3) {
+            div_mensagem_blend.innerHTML = '<b style="color: red">Informe o nome do novo hamburguer.</b>';
+        } else {
+            mensagem = "PREPARANDO NOVO HAMBURGUER<br>";
+
+            for (var contador = 0; contador < ingredientes_blend.length; contador++) {
+                preco_ingrediente = peso_gramas_ingredientes[contador] / 1000 * preco_kilo_ingredientes[contador];
+                mensagem += `${contador + 1} – Ingrediente: <b>${ingredientes_blend[contador]}</b> – Peso: <b>${peso_gramas_ingredientes[contador]}</b>g - Preço KG: R$<b>${preco_kilo_ingredientes[contador]}</b> - Preço Final: R$<b>${preco_ingrediente}</b><br>`;
+                novo_preco_blend += preco_ingrediente;
+                novo_peso_blend += peso_gramas_ingredientes[contador];
+            }
+
+            nome_blend.push(novo_nome_blend);
+            peso_blend.push(novo_peso_blend);
+            preco_blend.push(novo_preco_blend);
+
+            mensagem += `<br>INFORMAÇÕES DO HAMBURGUER REGISTRADO NO CATÁLOGO:<br>Nome: <b>${novo_nome_blend}</b><br>Peso Total: <b>${novo_peso_blend}</b>g<br>Preço Total: R$<b>${novo_preco_blend}</b><br>`;
+            div_mensagem_blend.innerHTML = mensagem;
+        }
+    }
+
+    function montar_cardapio() {
+        var novo_nome_blend = input_nome_blend.value;
+
+        if (nome_blend.length <= 0) {
+            div_mensagem_blend.innerHTML = '<b style="color: red">Adicione ao menos um novo blend de hamburguer para prosseguir.</b>';
+        } else if (novo_nome_blend.length < 3) {
+            div_mensagem_blend.innerHTML = '<b style="color: red">Informe o nome do novo hamburguer.</b>';
+        } else {
+            tela_blend.style.display = "none";
+            tela_cardapio.style.display = "block";
+        }
+    }
+
+    function adicionar_lanche() {
+        var tipo_hamburguer = input_tipo_hamburguer.value;
+        var quantidade_hamburgueres = Number(input_quantidade_hamburgueres.value);
+        var queijo = select_queijo.value;
+        var cebola = select_cebola.value;
+        var alface = select_alface.value;
+        var tomate = select_tomate.value;
+
+        var mensagem = "";
+        var blend_escolhido = nome_blend.indexOf(tipo_hamburguer);
+        var valor_hamburguer = 0;
+
+        if (quantidade_hamburgueres == "" || quantidade_hamburgueres <= 0) {
+            div_mensagem_cardapio.innerHTML = '<b style="color: red">Informe corretamente o tipo de hamburguer e a quantidade.</b>';
+        } else if (blend_escolhido == -1) {
+            div_mensagem_cardapio.innerHTML = `<b style="color: red">O hamburguer '${tipo_hamburguer}' não existe no catálogo de hamburgueres.</b>`;
+        } else {
+
+            if (queijo == "mussarela") {
+                valor_hamburguer += 2;
+            } else if (queijo == "prato") {
+                valor_hamburguer += 2.5;
+            } else if (queijo == "cheddar") {
+                valor_hamburguer += 3;
+            }
+            
+            if (cebola == "sim") {
+                valor_hamburguer += 1.5;
+            }
+
+            if (alface == "sim") {
+                valor_hamburguer += 1.75;
+            }
+
+            if (tomate == "sim") {
+                valor_hamburguer += 2;
+            }
+
+            valor_hamburguer += preco_blend[blend_escolhido] * quantidade_hamburgueres;
+
+            if (queijo == "sem_queijo") {
+                queijo = "sem queijo";
+            }
+
+            mensagem = `Tipo Hamburguer: <b>${nome_blend[blend_escolhido]}</b> (<b>${peso_blend[blend_escolhido]}</b>g / R$<b>${preco_blend[blend_escolhido]}</b>)<br>Quantidade de Hamburgueres: <b>${quantidade_hamburgueres}</b><br>Queijo: <b>${queijo}</b><br>Cebola: <b>${cebola}</b><br>Alface: <b>${alface}</b><br>Tomate: <b>${tomate}</b><br><br>Preço Final do Lanche: R$<b>${valor_hamburguer}</b>`;
+            div_mensagem_cardapio.innerHTML = mensagem;
+
+        }
+    }
+</script>

@@ -1,0 +1,73 @@
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 20</title>
+</head>
+
+<body>
+    Nome do produto: <input type="text" id="input_produto"><br>
+    Preço do produto: <input type="text" id="input_preco"><br>
+    <button onclick="cadastrar()">Cadastrar</button><br>
+    <button onclick="atualizar()">Atualizar Estoque</button><br>
+    <select name="" id="select_precos">
+        <option value="acima">Preços acima de</option>
+        <option value="abaixo">Preços abaixo de</option>
+    </select><br>
+    Valor: <input type="number" id="input_valor"><br>
+    <button onclick="filtrar()">Filtrar produtos</button><br>
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    var lista_produtos = [];
+    var lista_precos = [];
+    
+    function cadastrar() {
+        var produto = input_produto.value;
+        var preco = Number(input_preco.value);
+        if (preco >= 0 && produto.length >= 3) {
+            lista_produtos.push(produto);
+            lista_precos.push(preco);
+        } else {
+            var mensagem = `O preço ou o nome do produto é inválido`;
+            div_mensagem.innerHTML = mensagem;
+        }
+    }
+
+    function atualizar() {
+        var produto = input_produto.value;
+        var preco = Number(input_preco.value);
+        var tamanho_lista = lista_produtos.length;
+        var mensagem = `Você tem ${tamanho_lista} produtos cadastrados em estoque:<br><br>`;
+        var preco_total = 0;
+
+        for (var contador = 0; contador < tamanho_lista; contador++) {
+            mensagem += `${contador + 1}. ${lista_produtos[contador]} - R$${lista_precos[contador]}<br>`;
+            preco_total += lista_precos[contador];
+        }
+
+        mensagem += `<br>Seu estoque vale R$${preco_total}`;
+
+        div_mensagem.innerHTML = mensagem;
+    }
+
+    function filtrar() {
+        var precos = select_precos.value;
+        var valor = Number(input_valor.value);
+        var mensagem = ``;
+        var tamanho_lista = lista_produtos.length;
+
+        for (var contador = 0; contador < tamanho_lista; contador++) {
+            if (precos == "acima" && lista_precos[contador] >= valor) {
+                mensagem += `${lista_produtos[contador]} - R$${lista_precos[contador]}<br>`;
+            } else if (precos == "abaixo" && lista_precos[contador] <= valor) {
+                mensagem += `${lista_produtos[contador]} - R$${lista_precos[contador]}<br>`;
+            }           
+        }
+
+        div_mensagem.innerHTML = mensagem;
+    }
+</script>

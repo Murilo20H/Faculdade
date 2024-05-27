@@ -1,0 +1,53 @@
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 18</title>
+</head>
+
+<body>
+    Nome da música: <input type="text" id="input_musica"><br>
+    De... <input type="number" id="input_de"><br>
+    Até... <input type="number" id="input_ate"><br>
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="exibir()">Exibir</button>
+    <button onclick="filtrar()">Filtrar</button>
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    var lista_musicas = [];
+    
+    function cadastrar() {
+        var musica = input_musica.value;
+        lista_musicas.push(musica)
+    }
+
+    function exibir() {
+        var musica = input_musica.value;
+        var mensagem = ``;
+        var tamanho_lista = lista_musicas.length;
+
+        for (var contador = 0; contador < tamanho_lista; contador++) {
+            mensagem += `${lista_musicas[contador]}<br>`;
+        }
+
+        div_mensagem.innerHTML = mensagem;
+    }
+
+    function filtrar() {
+        var musica = input_musica.value;
+        var de = Number(input_de.value);
+        var ate = Number(input_ate.value);
+        var mensagem = ``;
+        var tamanho_lista = lista_musicas.length;
+
+        for (var contador = de - 1; contador < ate; contador++) {
+            mensagem += `${lista_musicas[contador]}<br>`;
+        }
+
+        div_mensagem.innerHTML = mensagem;
+    }
+</script>

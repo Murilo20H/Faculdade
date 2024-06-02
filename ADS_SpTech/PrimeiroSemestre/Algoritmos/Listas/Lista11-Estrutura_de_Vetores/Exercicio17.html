@@ -1,0 +1,72 @@
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 17</title>
+</head>
+
+<body>
+    Nome do produto: <input type="text" id="input_nome"><br>
+    Quantidade: <input type="number" id="input_quantidade"><br>
+    <button onclick="comprar()">Comprar</button>
+    <button onclick="vender()">Vender</button>
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    var lista_nome_produtos = [];
+    var lista_quantidade_comprada = [];
+    var lista_fichas = [];
+    
+    function comprar() {
+        var nome = input_nome.value;
+        var quantidade = Number(input_quantidade.value);
+        var mensagem = "";
+        
+        var indice_produto = lista_nome_produtos.indexOf(nome);
+        var tamanho_lista_produtos = lista_nome_produtos.length;
+
+        if (indice_produto == -1) {
+            lista_fichas.push(nome);
+            lista_nome_produtos.push(nome);
+            lista_quantidade_comprada.push(quantidade);
+            mensagem = `Foi gerado uma nova ficha para o produto ${nome}.<br>Lista de fichas: ${lista_fichas}.<br><br>Lista de produtos: `;
+            for (var i = 0; i < tamanho_lista_produtos; i++) {
+                mensagem += `${lista_quantidade_comprada[i]} ${lista_nome_produtos[i]}<br>`;
+            }
+        } else {
+            var quantidade_anterior = lista_quantidade_comprada[indice_produto];
+            lista_quantidade_comprada[indice_produto] = quantidade_anterior + quantidade;
+            mensagem = `O item ${nome} foi adicionado na lista de produtos.<br>Lista de produtos: `;
+            for (var i = 0; i < tamanho_lista_produtos; i++) {
+                mensagem += `${lista_quantidade_comprada[i]} ${lista_nome_produtos[i]}<br>`;
+            }
+        }
+        div_mensagem.innerHTML = mensagem;
+    }
+
+    function vender() {
+        var nome = input_nome.value;
+        var quantidade = Number(input_quantidade.value);
+        var mensagem = "";
+        
+        var indice_produto = lista_nome_produtos.indexOf(nome);
+        var tamanho_lista_produtos = lista_nome_produtos.length;
+
+        if (indice_produto == -1) {
+            mensagem = `O produto ${nome} não existe no estoque.<br>Lista de produtos: ${lista_nome_produtos}.`;
+        } else if (lista_quantidade_comprada[indice_produto] < quantidade) {
+            mensagem = `A quantidade do produto ${nome} não suporta esta compra.<br>Quantidade de ${nome} no estoque: ${lista_quantidade_comprada[indice_produto]}.`;
+        } else {
+            var quantidade_anterior = lista_quantidade_comprada[indice_produto];
+            lista_quantidade_comprada[indice_produto] = quantidade_anterior - quantidade;
+            mensagem = `O item ${nome} foi vendido.<br>Lista de produtos: `;
+            for (var i = 0; i < tamanho_lista_produtos; i++) {
+                mensagem += `${lista_quantidade_comprada[i]} ${lista_nome_produtos[i]}<br>`;
+            }
+        }
+        div_mensagem.innerHTML = mensagem;
+    }
+</script>

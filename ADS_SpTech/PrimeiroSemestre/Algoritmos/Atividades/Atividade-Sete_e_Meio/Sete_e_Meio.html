@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sete e Meio</title>
+</head>
+
+<body>
+    <button onclick="pedir()">Pedir Outra Carta</button>
+    <button onclick="passar()">Passar a Vez</button><br>
+    <span>Jogador</span>
+    <div id="div_jogador"></div>
+    <br><br><br>
+    <span>Banca</span>
+    <div id="div_banca"></div>
+    <br><br>
+    <div id="div_resultado"></div>
+</body>
+
+</html>
+<script>
+    const cartas = [
+        { valor: 'Ás', naipe: 'Copas', pontuacao: 1 },
+        { valor: 'Ás', naipe: 'Espadas', pontuacao: 1 },
+        { valor: 'Ás', naipe: 'Ouros', pontuacao: 1 },
+        { valor: 'Ás', naipe: 'Paus', pontuacao: 1 },
+
+        { valor: '2', naipe: 'Copas', pontuacao: 2 },
+        { valor: '2', naipe: 'Espadas', pontuacao: 2 },
+        { valor: '2', naipe: 'Ouros', pontuacao: 2 },
+        { valor: '2', naipe: 'Paus', pontuacao: 2 },
+
+        { valor: '3', naipe: 'Copas', pontuacao: 3 },
+        { valor: '3', naipe: 'Espadas', pontuacao: 3 },
+        { valor: '3', naipe: 'Ouros', pontuacao: 3 },
+        { valor: '3', naipe: 'Paus', pontuacao: 3 },
+
+        { valor: '4', naipe: 'Copas', pontuacao: 4 },
+        { valor: '4', naipe: 'Espadas', pontuacao: 4 },
+        { valor: '4', naipe: 'Ouros', pontuacao: 4 },
+        { valor: '4', naipe: 'Paus', pontuacao: 4 },
+
+        { valor: '5', naipe: 'Copas', pontuacao: 5 },
+        { valor: '5', naipe: 'Espadas', pontuacao: 5 },
+        { valor: '5', naipe: 'Ouros', pontuacao: 5 },
+        { valor: '5', naipe: 'Paus', pontuacao: 5 },
+
+        { valor: '6', naipe: 'Copas', pontuacao: 6 },
+        { valor: '6', naipe: 'Espadas', pontuacao: 6 },
+        { valor: '6', naipe: 'Ouros', pontuacao: 6 },
+        { valor: '6', naipe: 'Paus', pontuacao: 6 },
+
+        { valor: '7', naipe: 'Copas', pontuacao: 7 },
+        { valor: '7', naipe: 'Espadas', pontuacao: 7 },
+        { valor: '7', naipe: 'Ouros', pontuacao: 7 },
+        { valor: '7', naipe: 'Paus', pontuacao: 7 },
+
+        { valor: 'Valete', naipe: 'Copas', pontuacao: 0.5 },
+        { valor: 'Valete', naipe: 'Espadas', pontuacao: 0.5 },
+        { valor: 'Valete', naipe: 'Ouros', pontuacao: 0.5 },
+        { valor: 'Valete', naipe: 'Paus', pontuacao: 0.5 },
+
+        { valor: 'Rainha', naipe: 'Copas', pontuacao: 0.5 },
+        { valor: 'Rainha', naipe: 'Espadas', pontuacao: 0.5 },
+        { valor: 'Rainha', naipe: 'Ouros', pontuacao: 0.5 },
+        { valor: 'Rainha', naipe: 'Paus', pontuacao: 0.5 },
+
+        { valor: 'Rei', naipe: 'Copas', pontuacao: 0.5 },
+        { valor: 'Rei', naipe: 'Espadas', pontuacao: 0.5 },
+        { valor: 'Rei', naipe: 'Ouros', pontuacao: 0.5 },
+        { valor: 'Rei', naipe: 'Paus', pontuacao: 0.5 }
+    ];
+    var pontuacao_jogador = 0;
+    var pontuacao_banca = 0;
+    var primeira_carta = true;
+    var acabou = false;
+
+    function pedir() {
+        if (!acabou) {
+            var posicao_pegada = Math.round(Math.random() * cartas.length);
+            var texto = "";
+            var carta_pegada = cartas[posicao_pegada];
+
+            pontuacao_jogador += carta_pegada.pontuacao;
+
+            texto = `(${pontuacao_jogador} pontos) ${carta_pegada.valor} de ${carta_pegada.naipe}<br>`
+            if (pontuacao_jogador > 7.5) {
+                texto += `JOGADOR ESTOUROU!`;
+                acabou = true;
+                div_resultado.innerHTML = "A banca venceu com 0 pontos!"
+            } else if (pontuacao_jogador == 7.5) {
+                texto += `SETE E MEIO`
+                acabou = true;
+                div_resultado.innerHTML = `O jogador venceu com ${pontuacao_jogador} pontos!`;
+            }
+
+            if (!primeira_carta) {
+                div_jogador.innerHTML += `Quero mais uma carta<br>`;
+            }
+
+            primeira_carta = false;
+            div_jogador.innerHTML += texto;
+        }
+    }
+
+    function passar() {
+        for (var i = 0; !acabou && pontuacao_banca <= pontuacao_jogador; i++) {
+            var posicao_pegada = Math.round(Math.random() * cartas.length);
+            var texto = "";
+            var carta_pegada = cartas[posicao_pegada];
+
+            pontuacao_banca += carta_pegada.pontuacao;
+
+            texto = `(${pontuacao_banca} pontos) ${carta_pegada.valor} de ${carta_pegada.naipe}<br>`
+            if (pontuacao_banca > 7.5) {
+                texto += `BANCA ESTOUROU!`;
+                acabou = true;
+                div_resultado.innerHTML = `O jogador venceu com ${pontuacao_jogador} pontos!`;
+            } else if (pontuacao_banca == 7.5) {
+                texto += `SETE E MEIO`
+                acabou = true;
+                div_resultado.innerHTML = `A banca venceu com ${pontuacao_banca} pontos!`;
+            } else if (pontuacao_banca > pontuacao_jogador && pontuacao_banca < 7.5) {
+                acabou = true;
+                div_resultado.innerHTML = `A banca venceu com ${pontuacao_banca} pontos!`;
+            }
+            div_banca.innerHTML += texto;
+        }
+    }
+</script>

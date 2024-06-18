@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 02</title>
+</head>
+<body>
+    Nome: <input id="input_nome">
+    Sobrenome: <input id="input_sobrenome">
+    Idade: <input id="input_idade">
+    <button onclick="cadastrar()">Cadastrar</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function cadastrar() {
+        var nome = input_nome.value;
+        var sobrenome = input_sobrenome.value;
+        var idade = Number(input_idade.value);
+
+        var usuario = {
+            nome: nome,
+            sobrenome: sobrenome,
+            idade: idade
+        }
+
+        var usuario2 = {
+            nome,
+            sobrenome,
+            idade
+        }
+
+        var usuario3 = {
+            nome,
+            sobrenome,
+            idade
+        }
+        usuario3.altura = 1.6;
+        delete usuario3.sobrenome;
+
+        console.log(usuario)
+        console.log(usuario2)
+        console.log(usuario3)
+    }
+</script>

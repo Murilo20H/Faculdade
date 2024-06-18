@@ -1,0 +1,16 @@
+CREATE DATABASE DevJack;
+USE DevJack;
+
+CREATE TABLE Usuario (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	nome VARCHAR(80) UNIQUE,
+	senha VARCHAR(20),
+    dinheiro FLOAT DEFAULT 500
+);
+
+CREATE TABLE Registro (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    fkUsuario INT,
+    valor FLOAT,
+    FOREIGN KEY (fkUsuario) REFERENCES Usuario(id)
+);

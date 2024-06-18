@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label for="input_cep">
+        CEP: <input maxlength="8" oninput="buscar()" type="text" id="input_cep">
+    </label><br><br>
+    <label for="input_bairro">
+        Bairro: <input type="text" id="input_bairro">
+    </label><br><br>
+    <label for="input_complemento">
+        Complemento: <input type="text" id="input_complemento">
+    </label><br><br>
+    <label for="input_cidade">
+        Cidade: <input type="text" id="input_cidade">
+    </label><br><br>
+    <label for="select_estado">
+        Estado: <select type="text" id="select_estado">
+            <option>RJ</option>
+            <option>SP</option>
+            <option>MG</option>
+            <option>RS</option>
+            <option>BA</option>
+            <option>MA</option>
+        </select>
+    </label><br><br>
+    <label for="input_logradouro">
+        Logradouro: <input type="text" id="input_logradouro">
+    </label><br><br>
+</body>
+
+</html>
+
+<script>
+    function buscar() {
+        const cep = input_cep.value;
+        if (cep.length == 8) {
+            fetch(`https://viacep.com.br/ws/${cep}/json/`).then(function (response) {
+                response.json().then(function (resposta) {
+                    input_bairro.value = resposta.bairro;
+                    input_complemento.value = resposta.complemento;
+                    input_cidade.value = resposta.localidade;
+                    select_estado.value = resposta.uf;
+                    input_logradouro.value = resposta.logradouro;
+                }).catch(function (erro) {
+                    console.error(erro)
+                });
+            }).catch(function (erro) {
+                console.error(erro)
+            });
+        }
+    }
+</script>

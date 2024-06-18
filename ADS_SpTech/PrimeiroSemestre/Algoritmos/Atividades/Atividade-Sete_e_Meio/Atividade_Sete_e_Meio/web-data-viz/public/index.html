@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevJack</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/icons/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+    </head>
+    
+<body onload="validar_sessao()">
+    <div id="tela_toda">
+        <div id="aposta">
+            <button id="botao_apostar" onclick="fazer_aposta()">APOSTAR</button>
+            <button id="botao_estatistica" onclick="ver_estatistica()">ESTATÍSTICAS</button>
+            <button id="botao_login" onclick="fazer_login()">LOGIN</button>
+            <button id="botao_cadastro" onclick="fazer_cadastro()">CADASTRO</button>
+        </div>
+        <div id="pontuacao">
+            <span>JOGADOR: <span id="span_pontuacao_jogador">0</span></span>
+            <span>DINHEIRO: R$<span id="valor_dinheiro">0</span></span>
+            <span>APOSTA: R$<span id="valor_aposta">0</span></span>
+            <span>BANCA: <span id="span_pontuacao_banca">0</span></span>
+        </div>
+        <div id="cartas">
+            <div id="jogador"></div>
+            <div id="compra">
+                <div class="card-inner" id="card">
+                    <img src="assets/icons/verso.png" class="carta_comprar" id="carta-do-centro" onclick="pedir()">
+                </div>
+                <button onclick="passar()">TERMINAR RODADA</button>
+            </div>
+            <div id="banca"></div>
+        </div>
+    </div>
+    
+    
+    <!-- LOGIN E CADASTRO -->
+    <div id="card-login">
+        <div id="card-erro"><span id="mensagem_erro"></span></div>
+        <div class="container" id="container">
+            <div class="form-container sign-up-container">
+                <form action="#">
+                    <h1>CADASTRE-SE</h1>
+                    <input autocomplete="off" id="nome_input_cadastro" type="text" placeholder="Nome de usuário" />
+                    <input autocomplete="off" id="senha_input_cadastro" type="password" placeholder="Senha" />
+                    <input autocomplete="off" id="confirmar_senha_input_cadastro" type="password" placeholder="Confirmar senha" />
+                    <button onclick="cadastrar()">CADASTRAR</button>
+                </form>
+            </div>
+            <div class="form-container sign-in-container">
+                <form action="#">
+                    <h1>ENTRE</h1>
+                    <input autocomplete="off" id="nome_input_login" type="text" placeholder="Nome de usuário" />
+                    <input autocomplete="off" id="senha_input_login" type="password" placeholder="Senha" />
+                    <button onclick="entrar()">ENTRAR</button>
+                </form>
+            </div>
+            <div class="overlay-container">
+                <div class="overlay">
+                    <div class="overlay-panel overlay-left">
+                        <h1>Bem vindo de volta!</h1>
+                        <p>Entre com a sua conta pessoal para poder apostar</p>
+                        <button class="ghost" id="signIn">ENTRAR</button>
+                    </div>
+                    <div class="overlay-panel overlay-right">
+                        <h1>Bem vindo!</h1>
+                        <p>Insira seus dados e comece sua jornada conosco</p>
+                        <button class="ghost" id="signUp">CADASTRAR</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="button_voltar" onclick="fechar()">VOLTAR</button>
+    </div>
+    
+    
+    
+    <!-- APOSTA -->
+    <div id="card-aposta">
+        <div id="card-erro-aposta"><span id="erro_aposta"></span></div>
+        <div class="container" id="container">
+            <div class="overlay-container">
+                <div class="overlay">
+                    <div class="overlay-panel overlay-right">
+                        <h1>Insira quantos reais serão apostados na próxima rodada!</h1>
+                        <p>Você tem R$50,00 reais</p>
+                        <input autocomplete="off" id="aposta_input" type="number" placeholder="Valor da aposta" />
+                        <button class="ghost" onclick="apostar()">APOSTAR</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="button_voltar" onclick="fechar()">VOLTAR</button>
+    </div>
+
+
+
+    <!-- ESTATISTICAS -->
+    <div id="card-estatistica">
+        <div id="card-erro-estatistica"><span id="erro_estatistica"></span></div>
+        <div id="graficos">
+            <div id="grafico_registros">
+                <canvas id="chart_registros"></canvas>
+            </div>
+        </div>
+        <!-- <div class="container" id="container">
+            <div class="overlay-container">
+                <div class="overlay">
+                    <div class="overlay-panel overlay-right">
+                        <h1>Insira quantos reais serão apostados na próxima rodada!</h1>
+                        <p>Você tem R$50,00 reais</p>
+                        <input autocomplete="off" id="aposta_input" type="number" placeholder="Valor da aposta" />
+                        <button class="ghost" onclick="apostar()">APOSTAR</button>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <button class="button_voltar" onclick="fechar()">VOLTAR</button>
+    </div>
+</body>
+
+<script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</html>

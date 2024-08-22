@@ -18,7 +18,7 @@ public class ExemploLacosDeRepeticao {
         Integer inteiroAleatorio = ThreadLocalRandom.current().nextInt(1, 11);
         while(inteiroAleatorio != 3) {
             inteiroAleatorio = ThreadLocalRandom.current().nextInt(1, 11);
-            System.out.println("Não soreteou, sorteado: " + inteiroAleatorio);
+            System.out.println("Não sorteou, sorteado: " + inteiroAleatorio);
         }
         System.out.println("Número sorteado");
     }

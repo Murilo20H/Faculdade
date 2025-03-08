@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <input id="input_nome" placeholder="Nome" type="text">
+        <input id="input_email" placeholder="E-mail" type="text">
+        <input id="input_senha" placeholder="Senha" type="text">
+        <button id="btn-submit" type="submit">Cadastrar</button>
+    </form>
+
+    <section>
+        <ul id="users_list"></ul>
+    </section>
+
+    <script>
+        const buttonSubmit = document.querySelector('#btn-submit');
+        const userList = document.querySelector('#users_list');
+
+        window.addEventListener('load', () => {
+            getUsers();
+        })
+
+        buttonSubmit.addEventListener('click', () => {
+            event.preventDefault();
+            createUser();
+        })
+
+        const createUser = () => {
+            const name = input_nome.value;
+            const email = input_email.value;
+            const password = input_senha.value;
+
+            const newUser = { name, email, password }
+
+            const formattedUser = JSON.stringify(newUser)
+
+            fetch(
+                "http://localhost:8080/users",
+                {
+                    body: formattedUser,
+                    method: "POST"
+                }
+            )
+            .then((res) => {
+                console.log("res ", res)
+                getUsers();
+            })
+            .catch((error) => {
+                console.error(error);
+            })
+        }
+
+        const getUsers = () => {
+            fetch("http://localhost:8080/users")
+            .then((res) => res.json())
+            .then((data) => {
+                userList.innerHTML = "";
+                data.forEach((user) => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `Nome: ${user.name} | Email: ${user.email}<br>`;
+                    userList.appendChild(li)
+                })
+            })
+            .catch((error) => {
+                console.error(error);
+            })
+        }
+
+    </script>
+</body>
+
+</html>

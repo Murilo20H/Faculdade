@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio</title>
+</head>
+<body>
+    <p>Digite um número para ser o limite da contagem:</p>
+    <br>
+    <input id="input_limite" type="text">
+    <br><br>
+    <p>Digite um número para testes de divisibilidade:</p>
+    <br>
+    <input id="input_teste" type="text">
+    <br><br>
+    <button onclick="somar()">Somar Números</button>
+    <br>
+    <div id="mensagem"></div>
+</body>
+</html>
+<script>
+    function somar() {
+        let limite = Number(input_limite.value)
+        let teste = Number(input_teste.value)
+        let soma = 0
+        mensagem.innerHTML = ''
+
+        if (limite >= 0 && teste >= 1 && teste <= limite) {
+            for (let i = 1; i <= limite; i++) {
+                if (i % teste == 0) {
+                    soma += i
+                    mensagem.innerHTML += `<br>${i}<br>`
+                }
+            }
+            mensagem.innerHTML += `<br>Soma dos Múltiplos: ${soma}`
+        }
+    }
+</script>

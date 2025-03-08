@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 01</title>
+</head>
+<body>
+    <p>Digite o sabor da pizza:</p>
+    <input id="input_sabor" type="text">
+    <br>
+    <p>Digite o preço da pizza:</p>
+    <input id="input_preco" type="text">
+    <br>
+    <p>Digite a quantidade de amigos que vão comer:</p>
+    <input id="input_amigos" type="text">
+    <br><br>
+    <button onclick="ver()">Ver valor por amigo</button>
+    <br><br>
+    <div id="mensagem"></div>
+</body>
+</html>
+<script>
+    function ver() {
+        let sabor = input_sabor.value
+        let preco = Number(input_preco.value)
+        let amigos = input_amigos.value
+        let valor_final = preco * 1.1 / amigos
+
+        mensagem.innerHTML = `Cada amigo vai colaborar com R$${valor_final} para a pizza de ${sabor}.`
+    }
+</script>

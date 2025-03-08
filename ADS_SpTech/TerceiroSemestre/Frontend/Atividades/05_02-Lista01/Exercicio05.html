@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 05</title>
+</head>
+<body>
+    <p>Digite um filme para cadastrar:</p>
+    <input id="input_filme" type="text">
+    <br><br>
+    <button onclick="cadastrar()">Cadastrar</button>
+    <br><br>
+    <div id="mensagem"></div>
+</body>
+</html>
+<script>
+    let filmes = []
+    function cadastrar() {
+        let filme = input_filme.value
+        filmes.push(filme)
+        mensagem.innerHTML = ``
+
+        for (let i = 0; i < filmes.length; i++) {
+            if (i % 2 == 0) {
+                mensagem.innerHTML += `<p style="color: blue">${filmes[i]}<p>`
+            } else {
+                mensagem.innerHTML += `<p style="color: red">${filmes[i]}<p>`      
+            }
+        }
+    }
+</script>

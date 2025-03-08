@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 04</title>
+</head>
+<body>
+    <p>Escolha a tabuada:</p>
+    <select id="select_tabuada">
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+    </select>
+    <br>
+    <p>Digite até que número a tabuada deve ser construída:</p>
+    <input id="input_final" type="text">
+    <br><br>
+    <button onclick="ver()">Ver Tabuada</button>
+    <br><br>
+    <div id="mensagem"></div>
+</body>
+</html>
+<script>
+    function ver() {
+        let tabuada = Number(select_tabuada.value)
+        let final = Number(input_final.value)
+
+        mensagem.innerHTML = ``
+
+        for (let i = 1; i <= final; i++) {
+            mensagem.innerHTML += `<br>${tabuada} x ${i} = ${tabuada * i}<br>`
+        }
+    }
+</script>

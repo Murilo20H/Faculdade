@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 06</title>
+</head>
+<body>
+    <p>Digite um música para cadastrar:</p>
+    <input id="input_musica" type="text">
+    <br>
+    <p>De...</p><input id="input_de" type="text">
+    <br>
+    <p>Até...</p><input id="input_ate" type="text">
+    <br><br>
+    <button onclick="cadastrar()">Cadastrar</button>
+    <br><br>
+    <button onclick="exibir()">Exibir</button>
+    <br><br>
+    <button onclick="filtrar()">Filtrar</button>
+    <br><br>
+    <div id="mensagem"></div>
+</body>
+</html>
+<script>
+    let musicas = []
+    function cadastrar() {
+        let musica = input_musica.value
+        musicas.push(musica)
+    }
+
+    function exibir() {
+        mensagem.innerHTML = ''
+        for (let i = 0; i < musicas.length; i++) {
+            mensagem.innerHTML += `<p>${musicas[i]}<p>`
+        }
+    }
+
+    function filtrar() {
+        let de = Number(input_de.value)
+        let ate = Number(input_ate.value)
+        mensagem.innerHTML = ''
+
+        if (de <= ate) {
+            for (let i = de; i <= ate; i++) {
+                mensagem.innerHTML += `<p>${musicas[i - 1]}<p>`
+            }
+        }
+    }
+</script>

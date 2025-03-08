@@ -1,0 +1,70 @@
+{
+  "users": [
+    {
+      "name": "Joao",
+      "email": "email@email.com",
+      "id": "1",
+      "password": "123123"
+    },
+    {
+      "id": "33fc",
+      "name": "Murilo",
+      "email": "murilo@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "8a63",
+      "name": "abc",
+      "email": "abc@hotmail.com",
+      "password": "abc"
+    },
+    {
+      "id": "682e",
+      "name": "abcabc",
+      "email": "abc@gmail.com",
+      "password": "123123"
+    },
+    {
+      "id": "7045",
+      "name": "Jorge",
+      "email": "jorge@hotmail.com",
+      "password": "abc"
+    },
+    {
+      "id": "40fd",
+      "name": "Jorge2",
+      "email": "jorge@hotmail.com2",
+      "password": "123"
+    },
+    {
+      "id": "aa9b",
+      "name": "Jorge3",
+      "email": "jorge3@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "7442",
+      "name": "Jorg4",
+      "email": "jorge4@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "8c11",
+      "name": "Jorge5",
+      "email": "jorge5@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "e9c2",
+      "name": "Murilo1",
+      "email": "murilo1@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "7009",
+      "name": "a",
+      "email": "a",
+      "password": "a"
+    }
+  ]
+}

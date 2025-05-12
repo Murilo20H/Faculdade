@@ -1,0 +1,16 @@
+{
+  "usuarios": [
+    {
+      "nome": "Teste",
+      "dataNascimento": "2001-08-21",
+      "profissao": "Professor",
+      "id": "3c10"
+    },
+    {
+      "id": "b87b",
+      "nome": "Pedro",
+      "dataNascimento": "2001-08-19",
+      "profissao": "Professor"
+    }
+  ]
+}

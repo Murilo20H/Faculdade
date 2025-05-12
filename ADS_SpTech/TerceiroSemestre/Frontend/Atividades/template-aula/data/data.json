@@ -1,0 +1,35 @@
+{
+  "usuarios": [
+    {
+      "nome": "Pedro Rocha",
+      "email": "dev@email.com",
+      "senha": "$2b$10$NalPAEj0YvML4BYbSc2swugviMn4bKNu6TfDS3fdKYtKTI84Dz12S",
+      "id": "0b62180e-7435-4cde-b773-80d9285effe6"
+    },
+    {
+      "id": "bd63",
+      "nome": "Nome",
+      "email": "email.com",
+      "senha": "1234"
+    },
+    {
+      "id": "442e",
+      "nome": "Nome",
+      "email": "email.com",
+      "senha": "1234"
+    },
+    {
+      "id": "9b11",
+      "nome": "nome",
+      "email": "email@123.com",
+      "senha": "123"
+    },
+    {
+      "nome": "Nome",
+      "email": "nome@email.com",
+      "senha": "$2b$10$wYGVf32SQDJMsCsnK3hife6frPN0VgN2Gl5xZmwz4jj6U6mP20tNe",
+      "id": "e9089100-ef26-4ab2-bf89-dd8743a55a6f"
+    }
+  ],
+  "postagens": []
+}

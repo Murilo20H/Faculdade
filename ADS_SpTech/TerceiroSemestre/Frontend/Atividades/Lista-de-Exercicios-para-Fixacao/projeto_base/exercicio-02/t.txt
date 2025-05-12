@@ -1,0 +1,83 @@
+1. Contador Dinâmico
+Crie um componente de Contador, que conte de 1 até 30, com os seguintes comportamentos: 
+
+Se o contador for entre 0 e 10, deve exibir "Você está longe de chegar ao 30".
+
+Caso ele seja maior que 10 e menor que 20, deve exibir "Está quase lá!".
+
+Caso seja maior ou igual a 20 e menor que 30, deve exibir "Falta pouco, você consegue!"
+
+Caso o contador tenha chegado em 30, deve deixar o botão desabilitado e exibir a mensagem "Você chegou em 30 cliques, parabéns!".
+
+OBS: Deve ter um botão para incrementar a contagem e exibir o valor do contador abaixo do botão. Por fim, exiba a frase específica abaixo do contador.
+
+
+
+
+
+
+2. Calculadora
+Crie uma calculadora que realize as operações de adição (+), subtração (-), multiplicação (×) e divisão (÷).
+
+A tela deve conter dois inputs para que o usuário insira os valores a serem calculados.
+
+Deve haver um campo de seleção (select/option), onde o usuário possa escolher a operação matemática desejada (+, -, ×, ÷).
+
+Após selecionar a operação e clicar no botão "Calcular", o resultado deve ser exibido na tela, abaixo dos botões.
+
+💡 Dica: Para capturar o valor digitado pelo usuário em um campo de input, utilize o atributo onChange.
+Veja o exemplo abaixo:
+
+<input onChange={(e) => console.log(e.target.value)} />
+Neste caso, e.target.value representa o valor que o usuário está digitando.
+
+
+
+
+
+
+3. Diário Interativo
+Crie um diário digital onde o usuário possa escrever suas anotações.
+
+A interface deve conter um campo de texto (textarea) onde o usuário pode escrever livremente.
+
+O conteúdo digitado deve ser salvo automaticamente para que, mesmo após o recarregamento da página, o texto continue visível.
+
+Utilize o localStorage para armazenar as informações de forma persistente no navegador.
+
+OBS: utilize useEffect para obter os valores do localStorage ao iniciar a página
+
+OBS2: utilize useEffect para observar a alteração do valor digitado e salvar no localStorage.
+
+
+
+
+
+
+4. Contador Dinâmico
+Crie um sistema de lista telefônica onde o usuário possa cadastrar, visualizar e excluir contatos.
+
+Requisitos:
+A interface deve conter três campos de entrada para que o usuário insira:
+    - Nome
+    - Sobrenome
+    - Telefone
+
+Após preencher os campos, o usuário poderá clicar no botão "Cadastrar" para adicionar o contato à lista telefônica.
+
+A lista de contatos cadastrados deve ser exibida na tela.
+
+Cada contato deve ter um botão de "Excluir" para que possa ser removido da lista.
+
+
+
+
+
+
+5. Exibir Personagens (difícil)
+Você deve consumir a API do "Rick And Morty" para exibir a foto e as informações do personagem na tela.
+
+Crie um componente que, ao ser carregado, faça a requisição para  API Rick & Morty 
+
+Após realizar a requisição à API do Rick and Morty, armazene em um estado e exiba as informações sobre os personagens.
+Exiba na tela a foto e o nome de cada personagem retornado pela API.

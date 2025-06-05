@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+
+    class TamanhoExcedidoErro extends Error {
+        constructor(messagem = "O tamanho do vetor foi excedido") {
+            super(messagem);
+            this.name = "TamanhoExcedidoErro";
+        }
+    }
+
+    function Pilha(tamanho) {
+        const vetor = Array.from({ length: tamanho });
+        let topo = -1;
+
+        function push(elemento) {
+            if (isFull()) {
+                throw new TamanhoExcedidoErro(`O item ${elemento} não pode ser inserido porque o vetor está cheio`)
+            } else {
+                vetor[++topo] = elemento
+            }
+        }
+
+        function pop() {
+            if (!isEmpty()) {
+                var item = vetor[topo]
+                vetor[topo--] = undefined;
+                return item;
+            }
+        }
+
+        function peek() {
+            if (isEmpty()) {
+                return undefined;
+            } else {
+                return vetor[topo];
+            }
+        }
+
+        function isEmpty() {
+            return topo == -1;
+        }
+
+        function isFull() {
+            return topo == tamanho - 1;
+        }
+
+        function size() {
+            return topo + 1;
+        }
+
+        function exibir() {
+            console.log(vetor);
+        }
+
+        return {
+            isEmpty,
+            isFull,
+            peek,
+            pop,
+            push,
+            exibir,
+            size
+        }
+    }
+
+    function ehPalindromo(palavra) {
+        const texto = palavra.toLowerCase();
+        const pilha = Pilha(texto.length);
+
+        for (let i = 0; i < texto.length; i++) {
+            pilha.push(texto[i]);
+        }
+
+        for (let i = 0; i < texto.length; i++) {
+            if (texto[i] !== pilha.pop()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    console.log("É um palíndromo? ");
+    console.log("arara: " + ehPalindromo("arara"));
+    console.log("banana: " + ehPalindromo("banana"));
+    console.log("Osso: " + ehPalindromo("Osso"));
+    console.log("Teste: " + ehPalindromo("Teste"));
+
+</script>

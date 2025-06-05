@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+
+    class TamanhoExcedidoErro extends Error {
+        constructor(messagem = "O tamanho do vetor foi excedido") {
+            super(messagem);
+            this.name = "TamanhoExcedidoErro";
+        }
+    }
+
+    class ElementoNaoEncontradoErro extends Error {
+        constructor(messagem = "O elemento desejado não foi encontrado") {
+            super(messagem);
+            this.name = "ElementoNaoEncontradoErro";
+        }
+    }
+    
+    function Pilha(tamanho) {
+        const vetor = Array.from({
+            length:tamanho
+        });
+        let topo = -1;
+
+        function push(elemento) {
+            if (isFull()) {
+                throw new TamanhoExcedidoErro(`O item ${elemento} não pode ser inserido porque o vetor está cheio`)
+            } else {
+                vetor[++topo] = elemento
+            }
+        }
+        
+        function pop() {
+            if (isFull()) {
+                var item = vetor[topo]
+                vetor[topo--] = undefined;
+                return item;
+            }
+        }
+
+        function peek() {
+            if (isEmpty()) {
+                return topo;
+            } else {
+                return vetor[topo];
+            }            
+        }
+
+        function isEmpty() {
+            return topo == -1;
+        }
+
+        function isFull() {
+            return topo == tamanho-1;
+        }
+
+        function exibir() {
+            console.log(vetor);
+        }
+
+        return {
+            isEmpty,
+            isFull,
+            peek,
+            pop,
+            push,
+            exibir
+        }
+    }
+
+
+
+    const pilha = Pilha(10);
+    console.log("Pilha esta cheia? "+pilha.isFull())
+    console.log("Pilha esta vazia? "+pilha.isEmpty())
+    
+    pilha.exibir()
+    console.log("\n\n\nApós adicionar 3 itens: ")
+    pilha.push("ABC")
+    pilha.push("DEF")
+    pilha.push("HIG")
+    pilha.exibir()
+    console.log("\n\n\nApós apagar o último: ")
+    pilha.pop()
+    pilha.exibir()
+    console.log("\n\n\nÚltimo item: ")
+    console.log(pilha.peek())
+
+
+</script>

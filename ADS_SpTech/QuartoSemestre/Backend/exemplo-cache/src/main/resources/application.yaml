@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: exemplo-cache
+  jpa:
+    defer-datasource-initialization: true
